@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css" />
+<script src="./support.js"></script>
+</head>
+<body>
+<div id="header-slot"></div>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Syne';src:url('fonts/Syne-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Google Sans Flex';src:url('fonts/GoogleSansFlex-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Google Sans Flex';src:url('fonts/GoogleSansFlex-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Google Sans Flex',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:#FDEAEC;color:#D81E2C;}
+@keyframes fchPulse{0%{transform:scale(.7);opacity:.9;}70%{transform:scale(2.4);opacity:0;}100%{opacity:0;}}
+@keyframes fchDot{0%,100%{transform:scale(1);}50%{transform:scale(1.5);}}
+@keyframes fchFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+@keyframes fchFloat2{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+@keyframes fchMarquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes fchMarquee2{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+@keyframes fchSpin{0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+@keyframes fchRing{0%{transform:scale(.8);opacity:.6;}100%{transform:scale(2);opacity:0;}}
+@keyframes fchUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+[data-reveal]{animation:fchUp linear both;animation-timeline:view();animation-range:entry 0% entry 36%;}
+[data-marquee]:hover>div{animation-play-state:paused;}
+
+/* ── HOME PAGE RESPONSIVE ── */
+@media(max-width:1024px){
+  [data-hero-grid]{grid-template-columns:1fr!important;}
+  [data-services-grid]{grid-template-columns:repeat(2,1fr)!important;}
+  [data-dest-grid]{grid-template-columns:repeat(2,1fr)!important;}
+  [data-steps-grid]{grid-template-columns:repeat(2,1fr)!important;}
+  [data-why-grid]{grid-template-columns:repeat(2,1fr)!important;}
+  [data-unis-grid]{grid-template-columns:repeat(2,1fr)!important;}
+  [data-accred-grid]{grid-template-columns:repeat(3,1fr)!important;}
+  [data-stats-bar]{flex-wrap:wrap;}
+}
+@media(max-width:768px){
+  /* hero text */
+  [data-hero-heading]{font-size:clamp(30px,8vw,46px)!important;}
+  [data-hero-sub]{font-size:15px!important;}
+  /* hero grid stacks */
+  [data-hero-grid]{grid-template-columns:1fr!important;}
+
+  /* hero stats mini */
+  [data-hero-stats]{gap:16px!important;}
+
+  /* section padding */
+  [data-section]{padding:60px 0!important;}
+
+  /* stats → horizontal snap slider */
+  [data-stats-bar]{
+    display:flex!important; flex-direction:row!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:0!important; scrollbar-width:none;
+    padding-bottom:8px!important;
+  }
+  [data-stats-bar]::-webkit-scrollbar{display:none;}
+  [data-stats-bar] > *{
+    flex:0 0 52vw!important; scroll-snap-align:start;
+    border-right:1px solid rgba(26,26,26,.08)!important;
+    border-bottom:none!important;
+  }
+
+  /* SERVICES → snap slider */
+  [data-services-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-services-grid]::-webkit-scrollbar{display:none;}
+  [data-services-grid] > *{flex:0 0 78vw!important;max-width:300px!important;scroll-snap-align:start;}
+
+  /* DESTINATIONS → snap slider */
+  [data-dest-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-dest-grid]::-webkit-scrollbar{display:none;}
+  [data-dest-grid] > *{flex:0 0 72vw!important;max-width:260px!important;scroll-snap-align:start;}
+
+  /* STEPS → snap slider */
+  [data-steps-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-steps-grid]::-webkit-scrollbar{display:none;}
+  [data-steps-grid] > *{flex:0 0 78vw!important;max-width:300px!important;scroll-snap-align:start;}
+
+  /* WHY CHOOSE US → snap slider */
+  [data-why-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-why-grid]::-webkit-scrollbar{display:none;}
+  [data-why-grid] > *{flex:0 0 76vw!important;max-width:280px!important;scroll-snap-align:start;}
+
+  /* ACCREDITATIONS → snap slider */
+  [data-accred-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:12px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-accred-grid]::-webkit-scrollbar{display:none;}
+  [data-accred-grid] > *{flex:0 0 44vw!important;max-width:160px!important;scroll-snap-align:start;}
+
+  /* TOP UNIVERSITIES → snap slider */
+  [data-unis-grid]{
+    display:flex!important; grid-template-columns:unset!important;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px!important; scrollbar-width:none;
+    padding:4px 20px 16px!important;
+    margin-left:-20px!important; margin-right:-20px!important;
+  }
+  [data-unis-grid]::-webkit-scrollbar{display:none;}
+  [data-unis-grid] > *{flex:0 0 72vw!important;max-width:260px!important;scroll-snap-align:start;}
+
+  /* GALLERY → simplified single column */
+  [data-gallery-grid]{
+    grid-template-columns:1fr!important;
+    grid-auto-rows:140px!important;
+  }
+  [data-gallery-grid] > *{grid-column:unset!important;grid-row:unset!important;}
+
+  /* BRANCHES + BLOG → stack */
+  [data-branches-blog]{grid-template-columns:1fr!important;padding:0 20px 60px!important;}
+
+  /* ELIGIBILITY → stack */
+  [data-elig-card]{grid-template-columns:1fr!important;}
+  [data-elig-card] > div:last-child{border-left:none!important;border-top:1px solid rgba(216,30,44,.08)!important;}
+  [data-elig-card] > div{padding:28px 24px!important;}
+
+  /* CONTACT → stack */
+  [data-contact-card]{grid-template-columns:1fr!important;}
+  [data-contact-card] > div:last-child{padding:28px 24px!important;}
+  [data-contact-card] > div:first-child{padding:32px 24px!important;}
+
+  /* FOOTER → 2 col then stack */
+  [data-footer-grid]{grid-template-columns:1fr 1fr!important;gap:28px!important;}
+
+  /* contact form name+phone grid */
+  [data-contact-card] form div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+  }
+
+  /* values grid inside about section */
+  [data-hero-grid] > div > div[style*="grid-template-columns:1fr 1fr 1fr"]{
+    display:flex!important; overflow-x:auto; scroll-snap-type:x mandatory;
+    gap:12px!important; padding-bottom:10px; scrollbar-width:none;
+  }
+  [data-hero-grid] > div > div[style*="grid-template-columns:1fr 1fr 1fr"] > *{
+    flex:0 0 72vw!important; scroll-snap-align:start;
+  }
+}
+@media(max-width:480px){
+  [data-hero-heading]{font-size:clamp(24px,9vw,36px)!important;}
+  [data-container]{padding-left:16px!important;padding-right:16px!important;}
+  [data-hero-btns]{flex-direction:column!important;gap:10px!important;}
+  [data-hero-btns] a,[data-hero-btns] button{width:100%!important;justify-content:center!important;}
+  [data-cta-banner]{padding:32px 16px!important;border-radius:18px!important;}
+  [data-footer-grid]{grid-template-columns:1fr!important;}
+  [data-elig-card] > div{padding:22px 18px!important;}
+  [data-contact-card] > div:first-child{padding:24px 18px!important;}
+  [data-contact-card] > div:last-child{padding:22px 18px!important;}
+}
+</style>
+</helmet>
+<div style="background:linear-gradient(180deg,#FFFFFF 0%,#F5F6FA 100%);color:#1A1A1A;font-family:'Google Sans Flex',sans-serif;overflow-x:hidden;position:relative;">
+
+<div style="position:fixed;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:520px;background:radial-gradient(ellipse at center,#FDEAEC 0%,rgba(253,234,236,0) 70%);opacity:.7;pointer-events:none;z-index:0;"></div>
+
+<!-- HERO -->
+<section id="home" data-screen-label="Hero" data-hero-grid data-container style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:calc(var(--header-h, 88px) + 60px) 32px 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;">
+  <div data-reveal>
+    <span style="display:inline-flex;align-items:center;gap:8px;background:#FDEAEC;color:#D81E2C;font-size:13px;font-weight:500;padding:7px 15px;border-radius:999px;margin-bottom:24px;">
+      <span style="position:relative;width:8px;height:8px;display:inline-flex;"><span style="position:absolute;inset:0;border-radius:50%;background:#D81E2C;"></span><span style="position:absolute;inset:0;border-radius:50%;background:#D81E2C;animation:fchPulse 2s ease-out infinite;"></span></span>
+      Trusted Study Abroad Partner
+    </span>
+    <h1 data-hero-heading style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(40px,5.4vw,68px);line-height:1.04;letter-spacing:-.02em;margin:0 0 22px;color:#1A1A1A;">Build Your <span style="color:#D81E2C;">Future</span><br/>Beyond Borders</h1>
+    <p data-hero-sub style="font-size:18px;line-height:1.65;color:#5A5A5A;max-width:480px;margin:0 0 32px;">Expert visa guidance, admissions to top global universities, and a 100% transparent process — from your first consultation to the day you fly out.</p>
+    <div data-hero-btns style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;">
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;background:#D81E2C;color:#fff;font-size:15.5px;font-weight:500;text-decoration:none;padding:15px 26px;border-radius:999px;box-shadow:0 12px 28px rgba(216,30,44,.3);" style-hover="background:#c01a27;transform:translateY(-2px);">Book Free Consultation
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#destinations" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#1A1A1A;font-size:15.5px;font-weight:500;text-decoration:none;padding:15px 26px;border-radius:999px;border:1.5px solid rgba(26,26,26,.14);" style-hover="border-color:#1A1A1A;">Explore Destinations</a>
+    </div>
+    <div data-hero-stats style="display:flex;gap:30px;flex-wrap:wrap;">
+      <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:30px;color:#D81E2C;line-height:1;">{{ cStudents }}</div><div style="font-size:13.5px;color:#8A8A95;margin-top:6px;">Students Placed</div></div>
+      <div style="width:1px;background:rgba(26,26,26,.1);"></div>
+      <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:30px;color:#1A1A1A;line-height:1;">{{ cPartners }}</div><div style="font-size:13.5px;color:#8A8A95;margin-top:6px;">University Partners</div></div>
+      <div style="width:1px;background:rgba(26,26,26,.1);"></div>
+      <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:30px;color:#1A1A1A;line-height:1;">{{ cCountries }}</div><div style="font-size:13.5px;color:#8A8A95;margin-top:6px;">Countries</div></div>
+    </div>
+  </div>
+  <div data-reveal style="position:relative;display:flex;justify-content:center;align-items:center;min-height:640px;">
+    <div style="position:absolute;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(216,30,44,.12),rgba(216,30,44,0) 64%);"></div>
+    <canvas data-globe width="1300" height="1300" style="position:relative;width:650px;max-width:100%;height:auto;"></canvas>
+    <div style="position:absolute;top:32px;left:6px;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:14px;padding:11px 15px;box-shadow:0 14px 34px rgba(26,26,26,.12);display:flex;align-items:center;gap:10px;animation:fchFloat 5s ease-in-out infinite;">
+      <span style="width:34px;height:34px;border-radius:9px;background:#FDEAEC;display:flex;align-items:center;justify-content:center;color:#D81E2C;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+      </span>
+      <div><div style="font-size:13.5px;font-weight:500;color:#1A1A1A;">Visa Approved</div><div style="font-size:11.5px;color:#8A8A95;">98% success rate</div></div>
+    </div>
+    <div style="position:absolute;bottom:36px;right:0;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:14px;padding:11px 15px;box-shadow:0 14px 34px rgba(26,26,26,.12);display:flex;align-items:center;gap:10px;animation:fchFloat2 6s ease-in-out infinite;">
+      <span style="width:34px;height:34px;border-radius:9px;background:#D81E2C;display:flex;align-items:center;justify-content:center;color:#fff;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </span>
+      <div><div style="font-size:13.5px;font-weight:500;color:#1A1A1A;">12+ Countries</div><div style="font-size:11.5px;color:#8A8A95;">Top universities</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section id="about" data-hero-grid data-section data-container style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1.08fr;gap:56px;align-items:center;">
+  <div data-reveal style="position:relative;">
+    <div style="aspect-ratio:4/5;border-radius:24px;background:linear-gradient(155deg,#D81E2C 0%,#a01420 100%);overflow:hidden;position:relative;box-shadow:0 30px 70px rgba(216,30,44,.22);">
+      <div style="position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:60px;color:#fff;line-height:1;">10+</div>
+        <div style="color:#fff;font-size:17px;font-weight:500;margin-top:8px;">Years guiding students<br/>to their dream universities</div>
+      </div>
+      <div style="position:absolute;top:28px;left:28px;width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;">
+        <img src="assets/fch-logo.png" alt="" style="width:56px;height:56px;object-fit:contain;" />
+      </div>
+    </div>
+  </div>
+  <div data-reveal>
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Who We Are</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 18px;color:#1A1A1A;">Your trusted partner for studying abroad</h2>
+    <p style="font-size:16.5px;line-height:1.75;color:#5A5A5A;margin:0 0 28px;">Future Career Hub helps students turn the dream of studying overseas into a clear, achievable plan. We handle the complexity — university selection, admissions, visa documentation — so you can focus on what matters: your future. Honest advice, real outcomes, every step of the way.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(26,26,26,.04),0 10px 26px rgba(26,26,26,.05);">
+          <span style="display:flex;width:42px;height:42px;border-radius:11px;background:#FDEAEC;color:#D81E2C;align-items:center;justify-content:center;margin-bottom:14px;">{{ v.iconEl }}</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#1A1A1A;">{{ v.title }}</div>
+          <div style="font-size:13px;color:#8A8A95;margin-top:5px;line-height:1.5;">{{ v.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" data-screen-label="Destinations" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 32px;">
+  <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 48px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Destinations We Offer</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 14px;color:#1A1A1A;">Study in 12+ countries worldwide</h2>
+    <p style="font-size:16.5px;line-height:1.7;color:#5A5A5A;margin:0;">From the UK and USA to Europe and beyond — find the right country, university and course for your goals.</p>
+  </div>
+  <div data-dest-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+    <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="12">
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:22px;box-shadow:0 1px 2px rgba(26,26,26,.04);transition:transform .25s,box-shadow .25s;cursor:pointer;" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <span style="width:44px;height:32px;border-radius:7px;background:#D81E2C;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;letter-spacing:.02em;">{{ d.code }}</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:16.5px;color:#1A1A1A;line-height:1.15;">{{ d.name }}</div>
+        </div>
+        <div style="font-size:13.5px;font-weight:500;color:#D81E2C;margin-bottom:4px;">{{ d.unis }}</div>
+        <div style="font-size:12.5px;color:#8A8A95;line-height:1.5;margin-bottom:16px;">{{ d.courses }}</div>
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#1A1A1A;text-decoration:none;">View Details
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D81E2C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" data-screen-label="Services" style="position:relative;z-index:1;background:linear-gradient(180deg,#FCF4F5 0%,#FFF8F9 100%);margin-top:40px;border-top:1px solid rgba(216,30,44,.08);border-bottom:1px solid rgba(216,30,44,.08);">
+  <div style="position:absolute;top:0;left:0;right:0;height:140px;background:radial-gradient(ellipse at 70% 0,rgba(216,30,44,.10),transparent 60%);"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:96px 32px;">
+    <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 52px;">
+      <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Our Services</span>
+      <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 14px;color:#1A1A1A;">Everything you need, end to end</h2>
+      <p style="font-size:16.5px;line-height:1.7;color:#5A5A5A;margin:0;">One team handling every step — from your first consultation to your arrival abroad.</p>
+    </div>
+    <div data-services-grid style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6 18c0-2.21 2.69-4 6-4s6 1.79 6 4"/><line x1="7" y1="6" x2="10" y2="6"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Study Visa Counselling</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">One-on-one guidance to match your profile to the right country and visa route.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">University Selection</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Shortlist the best-fit universities for your goals, budget and grades.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="8" y1="9" x2="10" y2="9"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Admission Processing</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">End-to-end application handling, SOPs and document preparation.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">IELTS / PTE Prep</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Structured coaching and mock tests to hit your target band score.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Visa Documentation</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Accurate, compliant file building for a high visa approval rate.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="10"/><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 4H4v3a3 3 0 0 0 3 3"/><path d="M17 4h3v3a3 3 0 0 1-3 3"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Scholarship Guidance</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Find and apply for the funding and merit scholarships you qualify for.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2C4.3 5.1 3.8 5.4 3.5 5.9l-.9 1.7c-.3.6-.1 1.3.5 1.6L8 11l-3.5 3.5c-.3.3-.4.7-.2 1.1l.6 1.2c.2.5.8.7 1.3.5L10 16l2 4h2l1.5-2.5 2-1.3c.5.1.9-.2 1.1-.7l.2-.3z"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Pre-Departure Briefing</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Everything you need to know before you fly — checklist to culture.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Accommodation Help</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Verified student housing options near your campus.</p>
+      </div>
+
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(216,30,44,.14);">
+        <span style="display:flex;width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 24px rgba(216,30,44,.32);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 9px;">Post-Arrival Support</h3>
+        <p style="font-size:14px;line-height:1.65;color:#8A8A95;margin:0;">Airport pickup, local SIM, bank account and settling-in assistance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:88px 32px;">
+  <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 48px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Why Choose Us</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0;color:#1A1A1A;">Built on trust, driven by outcomes</h2>
+  </div>
+  <div data-why-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+    <sc-for list="{{ whyChoose }}" as="w" hint-placeholder-count="4">
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:28px;box-shadow:0 1px 2px rgba(26,26,26,.04),0 12px 30px rgba(26,26,26,.05);">
+        <span style="display:flex;width:50px;height:50px;border-radius:13px;background:#FDEAEC;color:#D81E2C;align-items:center;justify-content:center;margin-bottom:18px;">{{ w.iconEl }}</span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:17.5px;color:#1A1A1A;margin:0 0 8px;letter-spacing:-.01em;">{{ w.title }}</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;margin:0;">{{ w.desc }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ACCREDITATIONS -->
+<section style="position:relative;z-index:1;background:linear-gradient(180deg,#FCF4F5 0%,#FFF8F9 100%);border-top:1px solid rgba(216,30,44,.08);border-bottom:1px solid rgba(216,30,44,.08);margin-top:24px;">
+  <div style="max-width:1200px;margin:0 auto;padding:72px 32px;">
+    <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 44px;">
+      <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Accredited &amp; Recognised</span>
+      <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.12;letter-spacing:-.015em;margin:14px 0 12px;color:#1A1A1A;">Officially certified partners</h2>
+      <p style="font-size:15.5px;line-height:1.7;color:#5A5A5A;margin:0;">We work with globally recognised bodies and official test partners — your application is in safe, accredited hands.</p>
+    </div>
+    <div data-accred-grid style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px;">
+      <sc-for list="{{ accreditations }}" as="a" hint-placeholder-count="6">
+        <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:16px;padding:22px 14px;text-align:center;box-shadow:0 1px 2px rgba(26,26,26,.04),0 10px 26px rgba(26,26,26,.05);display:flex;flex-direction:column;align-items:center;gap:12px;" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px rgba(216,30,44,.12);">
+          <span style="width:72px;height:72px;border-radius:16px;background:{{ a.bg }};display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:{{ a.fs }};color:{{ a.color }};letter-spacing:-.02em;">{{ a.mono }}</span>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:13.5px;color:#1A1A1A;line-height:1.2;">{{ a.name }}</div>
+            <div style="font-size:11px;color:#8A8A95;margin-top:3px;">{{ a.tag }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS MARQUEE -->
+<section style="position:relative;z-index:1;padding:56px 0 56px;">
+  <div data-reveal style="text-align:center;margin-bottom:32px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Our Global University Partners</span>
+  </div>
+  <div data-marquee style="overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);margin-bottom:14px;">
+    <div style="display:flex;gap:14px;width:max-content;animation:fchMarquee 34s linear infinite;">
+      <sc-for list="{{ partnersLoop }}" as="p" hint-placeholder-count="24">
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:10px;background:#F4F5F8;border:1px solid rgba(26,26,26,.06);border-radius:14px;padding:16px 26px;">
+          <span style="width:30px;height:30px;border-radius:8px;background:#1A1A1A;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;">{{ p.in }}</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:600;font-size:15px;color:#5A5A5A;white-space:nowrap;">{{ p.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div data-marquee style="overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);">
+    <div style="display:flex;gap:14px;width:max-content;animation:fchMarquee2 38s linear infinite;">
+      <sc-for list="{{ partnersLoop2 }}" as="p" hint-placeholder-count="24">
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:10px;background:#F4F5F8;border:1px solid rgba(26,26,26,.06);border-radius:14px;padding:16px 26px;">
+          <span style="width:30px;height:30px;border-radius:8px;background:#D81E2C;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;">{{ p.in }}</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:600;font-size:15px;color:#5A5A5A;white-space:nowrap;">{{ p.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TOP UNIVERSITIES -->
+<section style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:64px 32px 80px;">
+  <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 48px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Top Universities</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 14px;color:#1A1A1A;">Where our students get in</h2>
+    <p style="font-size:16.5px;line-height:1.7;color:#5A5A5A;margin:0;">A snapshot of the world-ranked universities we place students into every intake.</p>
+  </div>
+  <div data-unis-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+    <sc-for list="{{ universities }}" as="u" hint-placeholder-count="8">
+      <div data-reveal style="position:relative;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(216,30,44,.14);">
+        <div style="height:104px;background:{{ u.banner }};position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(255,255,255,.22),transparent 60%);"></div>
+          <span style="width:60px;height:60px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:{{ u.fs }};color:#1A1A1A;box-shadow:0 8px 20px rgba(26,26,26,.18);">{{ u.mono }}</span>
+        </div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:26px;height:18px;border-radius:4px;background:#1A1A1A;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:9px;display:flex;align-items:center;justify-content:center;">{{ u.country }}</span>
+            <span style="font-size:11px;font-weight:500;color:#D81E2C;background:#FDEAEC;padding:3px 9px;border-radius:999px;">{{ u.rank }}</span>
+          </div>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:15.5px;color:#1A1A1A;line-height:1.25;">{{ u.name }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <p style="text-align:center;font-size:13px;color:#A0A0A8;margin:28px 0 0;">Logos shown are placeholders — send us official university marks to display them here.</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" data-screen-label="Process" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 32px;">
+  <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 56px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">How It Works</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 14px;color:#1A1A1A;">Six simple steps to take off</h2>
+    <p style="font-size:16.5px;line-height:1.7;color:#5A5A5A;margin:0;">A clear, guided path from your first call to your flight out.</p>
+  </div>
+  <div data-steps-grid style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+      <div data-reveal style="position:relative;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:28px;box-shadow:0 1px 2px rgba(26,26,26,.04);overflow:hidden;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:46px;color:#FDEAEC;line-height:1;position:absolute;top:14px;right:20px;">{{ st.n }}</div>
+        <div style="width:42px;height:4px;border-radius:999px;background:#D81E2C;margin-bottom:18px;"></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:19px;color:#1A1A1A;margin:0 0 8px;letter-spacing:-.01em;">{{ st.title }}</h3>
+        <p style="font-size:14px;line-height:1.6;color:#8A8A95;margin:0;">{{ st.desc }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ELIGIBILITY CHECKER -->
+<section id="eligibility" data-screen-label="Eligibility" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 32px 88px;">
+  <div data-reveal data-elig-card style="background:#fff;border:1px solid rgba(216,30,44,.12);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1.05fr;box-shadow:0 24px 60px rgba(26,26,26,.10);">
+    <div style="padding:48px 44px;">
+      <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Free Eligibility Check</span>
+      <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,38px);line-height:1.12;letter-spacing:-.015em;margin:14px 0 12px;color:#1A1A1A;">Can you study abroad?<br/>Find out in 30 seconds</h2>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A;margin:0 0 28px;">Answer three quick questions and we'll tell you what you qualify for and exactly what to prepare next.</p>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Your highest education</label>
+          <select value="{{ eligEdu }}" onChange="{{ onEduChange }}" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;background:#fff;" style-focus="border-color:#D81E2C;">
+            <option value="">Select level</option>
+            <option>High School (12 years)</option>
+            <option>Bachelor's Degree</option>
+            <option>Master's Degree</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Preferred destination</label>
+          <select value="{{ eligDest }}" onChange="{{ onDestChange }}" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;background:#fff;" style-focus="border-color:#D81E2C;">
+            <option value="">Select country</option>
+            <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="12"><option>{{ d.name }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">English test (IELTS / PTE)</label>
+          <select value="{{ eligTest }}" onChange="{{ onTestChange }}" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;background:#fff;" style-focus="border-color:#D81E2C;">
+            <option value="">Select status</option>
+            <option>Already taken</option>
+            <option>Not yet taken</option>
+            <option>English-medium (may be exempt)</option>
+          </select>
+        </div>
+        <button onClick="{{ checkElig }}" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#D81E2C;color:#fff;font-family:'Google Sans Flex',sans-serif;font-size:15.5px;font-weight:500;border:none;border-radius:11px;padding:15px;cursor:pointer;box-shadow:0 12px 28px rgba(216,30,44,.3);opacity:{{ checkOpacity }};" style-hover="transform:translateY(-2px);">Check My Eligibility
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div style="background:linear-gradient(165deg,#FCF4F5,#FFF8F9);padding:48px 44px;border-left:1px solid rgba(216,30,44,.08);">
+      <sc-if value="{{ eligChecked }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:fchUp .5s ease both;">
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#D81E2C;color:#fff;font-size:13px;font-weight:500;padding:7px 15px;border-radius:999px;margin-bottom:18px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Good news — you're eligible
+          </span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#1A1A1A;margin:0 0 10px;letter-spacing:-.01em;">You qualify for a {{ eligProgram }}{{ eligDestSuffix }}</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#5A5A5A;margin:0 0 22px;">{{ eligTestNote }}</p>
+          <div style="font-size:12.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#D81E2C;margin-bottom:12px;">What we'll need from you</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:26px;">
+            <sc-for list="{{ requirements }}" as="r" hint-placeholder-count="6">
+              <div style="display:flex;align-items:flex-start;gap:10px;">
+                <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;margin-top:1px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <span style="font-size:14px;color:#3A3A3A;line-height:1.45;">{{ r }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;background:#1A1A1A;color:#fff;font-size:14.5px;font-weight:500;text-decoration:none;padding:13px 22px;border-radius:999px;" style-hover="background:#000;">Book a free consultation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ eligNotChecked }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <span style="display:flex;width:56px;height:56px;border-radius:15px;background:#fff;border:1px solid rgba(216,30,44,.12);color:#D81E2C;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(216,30,44,.1);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#1A1A1A;margin:0 0 10px;letter-spacing:-.01em;">General eligibility criteria</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#5A5A5A;margin:0 0 22px;">Most students qualify. Here's the baseline we assess — fill the form for your personalised result.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <sc-for list="{{ criteria }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid rgba(26,26,26,.06);border-radius:14px;padding:14px 16px;">
+                <span style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;">{{ c.iconEl }}</span>
+                <div>
+                  <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:14.5px;color:#1A1A1A;">{{ c.title }}</div>
+                  <div style="font-size:13px;color:#8A8A95;margin-top:3px;line-height:1.5;">{{ c.desc }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="position:relative;z-index:1;background:linear-gradient(180deg,#FCF4F5 0%,#FFF8F9 100%);border-top:1px solid rgba(216,30,44,.08);border-bottom:1px solid rgba(216,30,44,.08);">
+  <div style="max-width:1000px;margin:0 auto;padding:96px 32px;text-align:center;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Success Stories</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 44px;color:#1A1A1A;">Students we've helped take flight</h2>
+    <div style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:24px;padding:48px 44px;position:relative;box-shadow:0 1px 2px rgba(26,26,26,.04),0 20px 50px rgba(216,30,44,.08);">
+      <div style="display:flex;justify-content:center;gap:5px;margin-bottom:22px;">
+        <sc-for list="{{ tStars }}" as="x" hint-placeholder-count="5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D81E2C" stroke="none"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </sc-for>
+      </div>
+      <p style="font-family:'Syne',sans-serif;font-weight:500;font-size:clamp(20px,2.4vw,28px);line-height:1.45;color:#1A1A1A;margin:0 0 30px;letter-spacing:-.01em;">"{{ tText }}"</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
+        <span style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#D81E2C,#a01420);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:18px;">{{ tInitial }}</span>
+        <div style="text-align:left;">
+          <div style="font-weight:500;font-size:15.5px;color:#1A1A1A;">{{ tName }}</div>
+          <div style="font-size:13px;color:#8A8A95;display:flex;align-items:center;gap:6px;"><span style="width:22px;height:15px;border-radius:3px;background:#D81E2C;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:8px;display:inline-flex;align-items:center;justify-content:center;">{{ tCode }}</span>Now studying in {{ tCountry }}</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:34px;">
+        <button onClick="{{ prevT }}" style="width:44px;height:44px;border-radius:50%;background:transparent;border:1.5px solid rgba(26,26,26,.14);color:#1A1A1A;cursor:pointer;display:flex;align-items:center;justify-content:center;" style-hover="border-color:#D81E2C;color:#D81E2C;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button onClick="{{ nextT }}" style="width:44px;height:44px;border-radius:50%;background:#D81E2C;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;" style-hover="background:#c01a27;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" data-screen-label="Gallery" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:88px 32px;">
+  <div data-reveal style="text-align:center;max-width:640px;margin:0 auto 44px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Gallery</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0 10px;color:#1A1A1A;">Moments from our journey</h2>
+    <p style="font-size:15px;color:#8A8A95;margin:0;">Seminars, send-offs and student success — real photos will replace these placeholders.</p>
+  </div>
+  <div data-gallery-grid style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:16px;">
+    <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
+      <div data-reveal style="grid-column:{{ g.col }};grid-row:{{ g.row }};border-radius:18px;background:{{ g.bg }};position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-shadow:0 12px 30px rgba(26,26,26,.08);">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,26,26,.55));"></div>
+        <span style="position:relative;color:#fff;font-weight:500;font-size:14px;">{{ g.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- BRANCHES + BLOG -->
+<section data-branches-blog style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 32px 88px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+  <div data-reveal>
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Our Offices</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);line-height:1.12;letter-spacing:-.015em;margin:12px 0 24px;color:#1A1A1A;">Visit us in person</h2>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <sc-for list="{{ branches }}" as="b" hint-placeholder-count="2">
+        <div style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(26,26,26,.04);display:flex;gap:16px;align-items:flex-start;" style-hover="box-shadow:0 16px 36px rgba(26,26,26,.1);">
+          <span style="flex-shrink:0;width:46px;height:46px;border-radius:12px;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div style="flex:1;">
+            <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:17px;color:#1A1A1A;">{{ b.city }}</div>
+            <div style="font-size:13.5px;color:#8A8A95;margin:4px 0 10px;">{{ b.addr }}</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:#D81E2C;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384z"/></svg>
+              {{ b.phone }}
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div data-reveal>
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">Latest Articles</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);line-height:1.12;letter-spacing:-.015em;margin:12px 0 24px;color:#1A1A1A;">From the blog</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <sc-for list="{{ blog }}" as="bl" hint-placeholder-count="3">
+        <a href="#" style="display:flex;gap:16px;align-items:center;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:16px;padding:14px;text-decoration:none;box-shadow:0 1px 2px rgba(26,26,26,.04);" style-hover="box-shadow:0 14px 32px rgba(26,26,26,.1);transform:translateY(-2px);">
+          <span style="flex-shrink:0;width:74px;height:74px;border-radius:12px;background:{{ bl.bg }};"></span>
+          <div style="flex:1;">
+            <span style="display:inline-block;font-size:11px;font-weight:500;color:#D81E2C;background:#FDEAEC;padding:3px 9px;border-radius:999px;margin-bottom:7px;">{{ bl.tag }}</span>
+            <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:15.5px;color:#1A1A1A;line-height:1.25;">{{ bl.title }}</div>
+            <div style="font-size:12px;color:#8A8A95;margin-top:5px;">{{ bl.date }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" data-screen-label="FAQ" style="position:relative;z-index:1;max-width:820px;margin:0 auto;padding:24px 32px 88px;">
+  <div data-reveal style="text-align:center;margin-bottom:40px;">
+    <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D81E2C;">FAQs</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:14px 0;color:#1A1A1A;">Questions, answered</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+      <div data-reveal style="background:#fff;border:1px solid rgba(26,26,26,.08);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(26,26,26,.04);">
+        <button onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;cursor:pointer;padding:20px 24px;text-align:left;font-family:'Syne',sans-serif;font-weight:600;font-size:16.5px;color:#1A1A1A;">
+          {{ f.q }}
+          <span style="flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;transition:transform .25s;transform:{{ f.rot }};">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.65;color:#5A5A5A;">{{ f.a }}</div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-screen-label="Contact" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 32px 96px;">
+  <div data-contact-card style="background:linear-gradient(150deg,#D81E2C 0%,#9c1119 100%);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;box-shadow:0 30px 70px rgba(216,30,44,.28);">
+    <div style="padding:52px 44px;position:relative;">
+      <div style="position:absolute;top:-40px;left:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 70%);"></div>
+      <div style="position:relative;">
+        <span style="font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);">Free Consultation</span>
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,40px);line-height:1.12;letter-spacing:-.015em;margin:14px 0 16px;color:#fff;">Tell us your idea.<br/>We'll make it real.</h2>
+        <p style="font-size:15.5px;line-height:1.7;color:rgba(255,255,255,.6);margin:0 0 36px;">Book a free 30-minute call — no commitment. We'll map out exactly how to get you studying abroad.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384z"/></svg>
+            </span>
+            <div><div style="font-size:12px;color:rgba(255,255,255,.45);">Phone / WhatsApp</div><div style="font-size:15px;font-weight:500;color:#fff;">0343-3350139</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+            </span>
+            <div><div style="font-size:12px;color:rgba(255,255,255,.45);">Email</div><div style="font-size:15px;font-weight:500;color:#fff;">fchofficials@gmail.com</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <div><div style="font-size:12px;color:rgba(255,255,255,.45);">Working Hours</div><div style="font-size:15px;font-weight:500;color:#fff;">Mon–Sat · 10am – 7pm</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;padding:48px 44px;">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <span style="width:72px;height:72px;border-radius:50%;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;margin-bottom:22px;animation:fchUp .5s ease both;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#1A1A1A;margin:0 0 8px;">Thank you</h3>
+          <p style="font-size:14.5px;color:#8A8A95;margin:0;">We've received your request and will call you within 24 hours.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div><label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Full Name</label><input required placeholder="Your name" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;" style-focus="border-color:#D81E2C;" /></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Phone</label><input required placeholder="03xx-xxxxxxx" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;" style-focus="border-color:#D81E2C;" /></div>
+            </div>
+            <div><label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Email</label><input required type="email" placeholder="you@email.com" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;" style-focus="border-color:#D81E2C;" /></div>
+            <div><label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Destination Country</label>
+              <select style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;background:#fff;" style-focus="border-color:#D81E2C;">
+                <option>Select a country</option>
+                <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="12"><option>{{ d.name }}</option></sc-for>
+              </select>
+            </div>
+            <div><label style="display:block;font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:7px;">Message</label><textarea rows="3" placeholder="Tell us about your goals…" style="width:100%;padding:13px 15px;border:1.5px solid rgba(26,26,26,.12);border-radius:11px;font-family:'Google Sans Flex',sans-serif;font-size:14.5px;color:#1A1A1A;outline:none;resize:none;" style-focus="border-color:#D81E2C;"></textarea></div>
+            <button type="submit" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#D81E2C,#b5141f);color:#fff;font-family:'Google Sans Flex',sans-serif;font-size:15.5px;font-weight:500;border:none;border-radius:11px;padding:15px;cursor:pointer;box-shadow:0 12px 28px rgba(216,30,44,.3);" style-hover="transform:translateY(-2px);">Book Free Consultation
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+
+</div>
+</x-dc>
+<div id="footer-slot"></div>
+<script src="js/main.js"></script>
+<script>FCH.init('home', 'root');</script>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    destOpen: false, servOpen: false, socialOpen: false,
+    activeT: 0, openFaq: 0, sent: false,
+    eligEdu: '', eligDest: '', eligTest: '', eligChecked: false,
+    cStudents: 0, cPartners: 0, cCountries: 0
+  };
+
+  icon(name, opts) {
+    opts = opts || {};
+    const E = (t, a) => React.createElement(t, a);
+    const P = d => E('path', { d });
+    const map = {
+      'graduation-cap': [P('M22 10v6'), P('M2 10l10-5 10 5-10 5z'), P('M6 12v5c3 3 9 3 12 0v-5')],
+      'shield-check': [P('M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'), P('m9 12 2 2 4-4')],
+      'award': [E('circle', { cx: 12, cy: 8, r: 6 }), P('M15.477 12.89 17 22l-5-3-5 3 1.523-9.11')],
+      'globe': [E('circle', { cx: 12, cy: 12, r: 10 }), P('M2 12h20'), P('M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z')],
+      'file-check': [P('M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'), P('M14 2v6h6'), P('m9 15 2 2 4-4')],
+      'file-text': [P('M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z'), P('M14 2v5h5'), P('M9 13h6'), P('M9 17h6')],
+      'book-open': [P('M12 7v14'), P('M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z')],
+      'plane': [P('M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z')],
+      'home': [P('M3 9.5 12 3l9 6.5'), P('M5 10v10h14V10')],
+      'map-pin': [P('M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z'), E('circle', { cx: 12, cy: 10, r: 3 })],
+      'users': [E('circle', { cx: 9, cy: 7, r: 4 }), P('M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2'), P('M16 3.13a4 4 0 0 1 0 7.75'), P('M21 21v-2a4 4 0 0 0-3-3.85')],
+      'check-circle': [E('circle', { cx: 12, cy: 12, r: 10 }), P('m9 12 2 2 4-4')],
+      'trending-up': [P('M16 7h6v6'), P('m22 7-8.5 8.5-5-5L2 17')],
+      'route': [E('circle', { cx: 6, cy: 19, r: 3 }), E('circle', { cx: 18, cy: 5, r: 3 }), P('M9 19h6a4 4 0 0 0 4-4V8')]
+    };
+    const kids = (map[name] || []).map((c, i) => React.cloneElement(c, { key: i }));
+    return E('svg', { width: opts.size || 24, height: opts.size || 24, viewBox: '0 0 24 24', fill: 'none', stroke: opts.stroke || 'currentColor', strokeWidth: opts.strokeWidth || 1.85, strokeLinecap: 'round', strokeLinejoin: 'round' }, kids);
+  }
+
+  flag(code) {
+    const E = (t, a, ...c) => React.createElement(t, a, ...c);
+    const r = (x, y, w, h, f) => E('rect', { x, y, width: w, height: h, fill: f });
+    const ln = (d, s, w) => E('path', { d, stroke: s, strokeWidth: w, fill: 'none' });
+    const m = {
+      UK: [r(0, 0, 18, 12, '#012169'), ln('M0,0L18,12M18,0L0,12', '#fff', 2.4), ln('M0,0L18,12M18,0L0,12', '#C8102E', 1), ln('M9,0V12M0,6H18', '#fff', 3.4), ln('M9,0V12M0,6H18', '#C8102E', 1.8)],
+      USA: [r(0, 0, 18, 12, '#fff'), r(0, 0, 18, 1.7, '#B22234'), r(0, 3.4, 18, 1.7, '#B22234'), r(0, 6.8, 18, 1.7, '#B22234'), r(0, 10.2, 18, 1.7, '#B22234'), r(0, 0, 8, 6.8, '#3C3B6E')],
+      DE: [r(0, 0, 18, 4, '#1A1A1A'), r(0, 4, 18, 4, '#DD0000'), r(0, 8, 18, 4, '#FFCE00')],
+      CA: [r(0, 0, 18, 12, '#fff'), r(0, 0, 4.5, 12, '#D52B1E'), r(13.5, 0, 4.5, 12, '#D52B1E'), E('path', { d: 'M9,3.4L10.1,6L9,8.6L7.9,6Z', fill: '#D52B1E' })],
+      AU: [r(0, 0, 18, 12, '#00247D'), r(0, 0, 9, 6, '#012169'), ln('M0,0L9,6M9,0L0,6', '#fff', 1), E('circle', { cx: 13.5, cy: 8.5, r: 1.5, fill: '#fff' })],
+      FR: [r(0, 0, 6, 12, '#0055A4'), r(6, 0, 6, 12, '#fff'), r(12, 0, 6, 12, '#EF4135')]
+    };
+    return m[code] || [];
+  }
+
+  globeEl() {
+    const E = (t, a, ...c) => React.createElement(t, a, ...c);
+    const cx = 240, cy = 240, R = 168;
+    const pins = [
+      { c: 'UK', x: 30, y: 58, dx: 150, dy: 152, d: 0 },
+      { c: 'USA', x: 352, y: 80, dx: 326, dy: 150, d: 0.5 },
+      { c: 'DE', x: 388, y: 206, dx: 360, dy: 238, d: 1.1 },
+      { c: 'AU', x: 332, y: 360, dx: 312, dy: 332, d: 1.7 },
+      { c: 'CA', x: 48, y: 360, dx: 162, dy: 332, d: 2.3 },
+      { c: 'FR', x: 18, y: 206, dx: 120, dy: 240, d: 2.9 }
+    ];
+    const dotEls = pins.map((p, i) => E('g', { key: 'd' + i, style: { transformOrigin: p.dx + 'px ' + p.dy + 'px', animation: 'fchDot 2.6s ease-in-out ' + (i * 0.3) + 's infinite' } },
+      E('circle', { cx: p.dx, cy: p.dy, r: 5, fill: '#D81E2C' }),
+      E('circle', { cx: p.dx, cy: p.dy, r: 5, fill: 'none', stroke: '#D81E2C', strokeWidth: 1.5, opacity: 0.4 })
+    ));
+    const pinEls = pins.map((p, i) => E('g', { key: 'p' + i },
+      E('line', { x1: p.dx, y1: p.dy, x2: p.x + 29, y2: p.y + 18, stroke: 'rgba(216,30,44,.32)', strokeWidth: 1.4, strokeDasharray: '3 3' }),
+      E('g', { style: { animation: 'fchFloat ' + (5 + i * 0.4) + 's ease-in-out ' + p.d + 's infinite' } },
+        E('rect', { x: p.x, y: p.y, width: 58, height: 36, rx: 9, fill: '#fff', filter: 'url(#fchSh)' }),
+        E('g', { transform: 'translate(' + (p.x + 9) + ',' + (p.y + 12) + ') scale(0.78)' }, ...this.flag(p.c)),
+        E('rect', { x: p.x + 9, y: p.y + 12, width: 14.04, height: 9.36, rx: 1.2, fill: 'none', stroke: 'rgba(0,0,0,.14)', strokeWidth: 0.8 }),
+        E('text', { x: p.x + 28, y: p.y + 23.5, fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 12.5, fill: '#1A1A1A' }, p.c)
+      )
+    ));
+    return E('svg', { viewBox: '0 0 480 480', width: '100%', style: { maxWidth: '500px', overflow: 'visible' } },
+      E('defs', null,
+        E('radialGradient', { id: 'fchSphere', cx: '38%', cy: '32%', r: '75%' },
+          E('stop', { offset: '0', stopColor: '#ffffff' }),
+          E('stop', { offset: '0.6', stopColor: '#fbfcfe' }),
+          E('stop', { offset: '1', stopColor: '#eef0f6' })),
+        E('clipPath', { id: 'fchClip' }, E('circle', { cx, cy, r: R })),
+        E('filter', { id: 'fchSh', x: '-40%', y: '-40%', width: '180%', height: '180%' },
+          E('feDropShadow', { dx: 0, dy: 4, stdDeviation: 5, floodColor: '#1A1A1A', floodOpacity: 0.16 })),
+        E('path', { id: 'fchOrbit', d: 'M35,240 a205,124 0 1,1 410,0 a205,124 0 1,1 -410,0', fill: 'none' })),
+      E('circle', { cx, cy, r: 210, fill: 'none', stroke: 'rgba(216,30,44,.10)', strokeWidth: 1 }),
+      E('circle', { cx, cy, r: R, fill: 'url(#fchSphere)', stroke: 'rgba(26,26,26,.10)', strokeWidth: 1.5 }),
+      E('g', { clipPath: 'url(#fchClip)', stroke: 'rgba(26,26,26,.11)', strokeWidth: 1, fill: 'none' },
+        E('ellipse', { cx, cy, rx: R, ry: 58 }),
+        E('ellipse', { cx, cy, rx: R, ry: 112 }),
+        E('ellipse', { cx, cy, rx: 58, ry: R }),
+        E('ellipse', { cx, cy, rx: 112, ry: R }),
+        E('line', { x1: cx - R, y1: cy, x2: cx + R, y2: cy }),
+        E('line', { x1: cx, y1: cy - R, x2: cx, y2: cy + R })),
+      E('circle', { cx, cy, r: R, fill: 'none', stroke: 'rgba(216,30,44,.16)', strokeWidth: 6, strokeDasharray: '2 10', strokeLinecap: 'round' }),
+      E('g', { transform: 'rotate(-15 240 240)' },
+        E('use', { href: '#fchOrbit', fill: 'none', stroke: 'rgba(216,30,44,.30)', strokeWidth: 1.6, strokeDasharray: '2 8', strokeLinecap: 'round' }),
+        E('g', null,
+          E('g', { transform: 'rotate(90)' },
+            E('circle', { cx: 0, cy: 0, r: 14, fill: '#fff', stroke: 'rgba(216,30,44,.18)', strokeWidth: 1, filter: 'url(#fchSh)' }),
+            E('path', { d: 'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z', fill: '#D81E2C', transform: 'translate(-12 -12) scale(1.1)' })),
+          E('animateMotion', { dur: '12s', repeatCount: 'indefinite', rotate: 'auto' }, E('mpath', { href: '#fchOrbit' })))),
+      ...dotEls,
+      ...pinEls);
+  }
+
+  componentDidMount() {
+    const targets = { cStudents: 5000, cPartners: 50, cCountries: 12 };
+    const dur = 1800, step = 30;
+    let t = 0;
+    this._ctr = setInterval(() => {
+      t += step;
+      const p = Math.min(1, t / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      this.setState({
+        cStudents: Math.round(targets.cStudents * e),
+        cPartners: Math.round(targets.cPartners * e),
+        cCountries: Math.round(targets.cCountries * e)
+      });
+      if (p >= 1) clearInterval(this._ctr);
+    }, step);
+    this.initGlobe();
+  }
+
+  roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  star(ctx, cx, cy, r) {
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const rr = i % 2 ? r * 0.42 : r;
+      const a = -Math.PI / 2 + i * Math.PI / 5;
+      const px = cx + Math.cos(a) * rr, py = cy + Math.sin(a) * rr;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath(); ctx.fill();
+  }
+
+  unionJack(ctx, x, y, w, h) {
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    const cx = x + w / 2, cy = y + h / 2;
+    ctx.fillStyle = '#012169'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = h * 0.3;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y + h); ctx.moveTo(x + w, y); ctx.lineTo(x, y + h); ctx.stroke();
+    ctx.strokeStyle = '#C8102E'; ctx.lineWidth = h * 0.13;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y + h); ctx.moveTo(x + w, y); ctx.lineTo(x, y + h); ctx.stroke();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = h * 0.38;
+    ctx.beginPath(); ctx.moveTo(cx, y); ctx.lineTo(cx, y + h); ctx.moveTo(x, cy); ctx.lineTo(x + w, cy); ctx.stroke();
+    ctx.strokeStyle = '#C8102E'; ctx.lineWidth = h * 0.22;
+    ctx.beginPath(); ctx.moveTo(cx, y); ctx.lineTo(cx, y + h); ctx.moveTo(x, cy); ctx.lineTo(x + w, cy); ctx.stroke();
+    ctx.restore();
+  }
+
+  drawFlag(ctx, code, x, y, w, h) {
+    ctx.save();
+    this.roundRect(ctx, x, y, w, h, Math.min(w, h) * 0.16);
+    ctx.clip();
+    const cx = x + w / 2, cy = y + h / 2;
+    if (code === 'US') {
+      ctx.fillStyle = '#B22234'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = '#fff';
+      for (let i = 1; i < 7; i += 2) ctx.fillRect(x, y + h * i / 7, w, h / 7);
+      ctx.fillStyle = '#3C3B6E'; ctx.fillRect(x, y, w * 0.42, h * 0.54);
+    } else if (code === 'UK') {
+      ctx.fillStyle = '#012169'; ctx.fillRect(x, y, w, h);
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = h * 0.22;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y + h); ctx.moveTo(x + w, y); ctx.lineTo(x, y + h); ctx.stroke();
+      ctx.strokeStyle = '#C8102E'; ctx.lineWidth = h * 0.1;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y + h); ctx.moveTo(x + w, y); ctx.lineTo(x, y + h); ctx.stroke();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = h * 0.3;
+      ctx.beginPath(); ctx.moveTo(cx, y); ctx.lineTo(cx, y + h); ctx.moveTo(x, cy); ctx.lineTo(x + w, cy); ctx.stroke();
+      ctx.strokeStyle = '#C8102E'; ctx.lineWidth = h * 0.16;
+      ctx.beginPath(); ctx.moveTo(cx, y); ctx.lineTo(cx, y + h); ctx.moveTo(x, cy); ctx.lineTo(x + w, cy); ctx.stroke();
+    } else if (code === 'CA') {
+      ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = '#D52B1E'; ctx.fillRect(x, y, w * 0.25, h); ctx.fillRect(x + w * 0.75, y, w * 0.25, h);
+      ctx.beginPath(); ctx.moveTo(cx, cy - h * 0.26); ctx.lineTo(cx + w * 0.1, cy); ctx.lineTo(cx, cy + h * 0.26); ctx.lineTo(cx - w * 0.1, cy); ctx.closePath(); ctx.fill();
+    } else if (code === 'DE') {
+      ctx.fillStyle = '#1A1A1A'; ctx.fillRect(x, y, w, h / 3);
+      ctx.fillStyle = '#DD0000'; ctx.fillRect(x, y + h / 3, w, h / 3);
+      ctx.fillStyle = '#FFCE00'; ctx.fillRect(x, y + 2 * h / 3, w, h / 3);
+    } else if (code === 'AU' || code === 'NZ') {
+      ctx.fillStyle = '#012169'; ctx.fillRect(x, y, w, h);
+      this.unionJack(ctx, x, y, w * 0.5, h * 0.5);
+      if (code === 'AU') {
+        ctx.fillStyle = '#fff';
+        this.star(ctx, x + w * 0.25, y + h * 0.74, h * 0.13);
+        this.star(ctx, x + w * 0.83, y + h * 0.24, h * 0.07);
+        this.star(ctx, x + w * 0.9, y + h * 0.52, h * 0.07);
+        this.star(ctx, x + w * 0.8, y + h * 0.78, h * 0.07);
+        this.star(ctx, x + w * 0.7, y + h * 0.55, h * 0.05);
+      } else {
+        ctx.fillStyle = '#CC142B';
+        this.star(ctx, x + w * 0.82, y + h * 0.26, h * 0.08);
+        this.star(ctx, x + w * 0.92, y + h * 0.54, h * 0.07);
+        this.star(ctx, x + w * 0.72, y + h * 0.62, h * 0.08);
+        this.star(ctx, x + w * 0.84, y + h * 0.82, h * 0.06);
+      }
+    } else if (code === 'TR') {
+      ctx.fillStyle = '#E30A17'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x + w * 0.42, cy, h * 0.27, 0, 7); ctx.fill();
+      ctx.fillStyle = '#E30A17'; ctx.beginPath(); ctx.arc(x + w * 0.48, cy, h * 0.21, 0, 7); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x + w * 0.62, cy, h * 0.1, 0, 7); ctx.fill();
+    } else if (code === 'SE' || code === 'FI') {
+      ctx.fillStyle = code === 'FI' ? '#fff' : '#006AA7'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = code === 'FI' ? '#003580' : '#FECC00';
+      ctx.fillRect(x + w * 0.3, y, w * 0.16, h); ctx.fillRect(x, cy - h * 0.08, w, h * 0.16);
+    } else if (code === 'FR') {
+      ctx.fillStyle = '#0055A4'; ctx.fillRect(x, y, w / 3, h);
+      ctx.fillStyle = '#fff'; ctx.fillRect(x + w / 3, y, w / 3, h);
+      ctx.fillStyle = '#EF4135'; ctx.fillRect(x + 2 * w / 3, y, w / 3, h);
+    } else if (code === 'RO') {
+      ctx.fillStyle = '#002B7F'; ctx.fillRect(x, y, w / 3, h);
+      ctx.fillStyle = '#FCD116'; ctx.fillRect(x + w / 3, y, w / 3, h);
+      ctx.fillStyle = '#CE1126'; ctx.fillRect(x + 2 * w / 3, y, w / 3, h);
+    } else if (code === 'HU') {
+      ctx.fillStyle = '#CE2939'; ctx.fillRect(x, y, w, h / 3);
+      ctx.fillStyle = '#fff'; ctx.fillRect(x, y + h / 3, w, h / 3);
+      ctx.fillStyle = '#477050'; ctx.fillRect(x, y + 2 * h / 3, w, h / 3);
+    } else if (code === 'AE') {
+      ctx.fillStyle = '#00732F'; ctx.fillRect(x, y, w, h / 3);
+      ctx.fillStyle = '#fff'; ctx.fillRect(x, y + h / 3, w, h / 3);
+      ctx.fillStyle = '#1A1A1A'; ctx.fillRect(x, y + 2 * h / 3, w, h / 3);
+      ctx.fillStyle = '#FF0000'; ctx.fillRect(x, y, w * 0.26, h);
+    } else if (code === 'CY') {
+      ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = '#D57800'; ctx.beginPath(); ctx.ellipse(cx, cy - h * 0.08, w * 0.2, h * 0.16, 0, 0, 7); ctx.fill();
+      ctx.strokeStyle = '#4E5B31'; ctx.lineWidth = h * 0.06;
+      ctx.beginPath(); ctx.moveTo(cx - w * 0.1, cy + h * 0.18); ctx.lineTo(cx - w * 0.02, cy + h * 0.08);
+      ctx.moveTo(cx + w * 0.1, cy + h * 0.18); ctx.lineTo(cx + w * 0.02, cy + h * 0.08); ctx.stroke();
+    } else if (code === 'MT') {
+      ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w / 2, h);
+      ctx.fillStyle = '#CF142B'; ctx.fillRect(x + w / 2, y, w / 2, h);
+      ctx.strokeStyle = '#CCCCCC'; ctx.lineWidth = h * 0.07;
+      ctx.strokeRect(x + w * 0.08, y + h * 0.14, w * 0.16, h * 0.16);
+    } else if (code === 'EU') {
+      ctx.fillStyle = '#003399'; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = '#FFCC00';
+      for (let i = 0; i < 12; i++) {
+        const a = i / 12 * Math.PI * 2 - Math.PI / 2;
+        ctx.beginPath(); ctx.arc(cx + Math.cos(a) * w * 0.26, cy + Math.sin(a) * h * 0.3, h * 0.05, 0, 7); ctx.fill();
+      }
+    } else {
+      ctx.fillStyle = '#1A1A1A'; ctx.fillRect(x, y, w, h);
+    }
+    ctx.restore();
+    ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = 1;
+    this.roundRect(ctx, x, y, w, h, Math.min(w, h) * 0.16); ctx.stroke();
+  }
+
+  initGlobe() {
+    const cv = document.querySelector('[data-globe]');
+    if (!cv) { setTimeout(() => this.initGlobe(), 120); return; }
+    const ctx = cv.getContext('2d');
+    const W = cv.width, H = cv.height;
+    const cx = W / 2, cy = H * 0.5, R = W * 0.375;
+    const tilt = -0.34, ct = Math.cos(tilt), st = Math.sin(tilt);
+    // clean wireframe grid (parallels + meridians) — no dots
+    const D2R = Math.PI / 180, grid = [];
+    [-60, -30, 0, 30, 60].forEach(lat => {
+      const ln = [], rl = lat * D2R;
+      for (let lo = 0; lo <= 360; lo += 5) { const r = lo * D2R; ln.push({ x: Math.cos(rl) * Math.sin(r), y: Math.sin(rl), z: Math.cos(rl) * Math.cos(r) }); }
+      grid.push(ln);
+    });
+    for (let lon = 0; lon < 360; lon += 30) {
+      const ln = [], rl = lon * D2R;
+      for (let la = -90; la <= 90; la += 5) { const r = la * D2R; ln.push({ x: Math.cos(r) * Math.sin(rl), y: Math.sin(r), z: Math.cos(r) * Math.cos(rl) }); }
+      grid.push(ln);
+    }
+    const rp = (x, y, z, rot) => {
+      const cr = Math.cos(rot), sr = Math.sin(rot);
+      const x1 = x * cr + z * sr, z1 = -x * sr + z * cr;
+      const y2 = y * ct - z1 * st, z2 = y * st + z1 * ct;
+      return { x: cx + x1 * R, y: cy - y2 * R, z: z2 };
+    };
+    // flags spread evenly around the globe (top / center / bottom) via fibonacci distribution
+    const codes = ['US', 'CA', 'UK', 'FR', 'DE', 'EU', 'SE', 'FI', 'HU', 'RO', 'TR', 'CY', 'MT', 'AE', 'AU', 'NZ'];
+    const Mn = codes.length, mga = Math.PI * (3 - Math.sqrt(5));
+    const markers = codes.map((code, i) => {
+      const uy = 1 - (i + 0.5) / Mn * 2;
+      const rr = Math.sqrt(1 - uy * uy), th = i * mga;
+      return { code, ux: Math.cos(th) * rr, uy, uz: Math.sin(th) * rr };
+    });
+    let rot = 0.4;
+    const orbit = (pa) => {
+      const orx = R * 1.30, ory = R * 0.62, oa = -0.28;
+      const ex = Math.cos(pa) * orx, ey = Math.sin(pa) * ory;
+      const coa = Math.cos(oa), soa = Math.sin(oa);
+      return { x: cx + ex * coa - ey * soa, y: cy + ex * soa + ey * coa, oa, orx, ory };
+    };
+    const draw = () => {
+      const now = Date.now();
+      ctx.clearRect(0, 0, W, H);
+      // outer border ring where the plane flies
+      const ob = orbit(0);
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(ob.oa);
+      ctx.strokeStyle = 'rgba(216,30,44,.14)'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.ellipse(0, 0, ob.orx, ob.ory, 0, 0, 7); ctx.stroke();
+      ctx.strokeStyle = 'rgba(216,30,44,.30)'; ctx.lineWidth = 2; ctx.setLineDash([2, 12]); ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.ellipse(0, 0, ob.orx, ob.ory, 0, 0, 7); ctx.stroke(); ctx.setLineDash([]);
+      ctx.restore();
+      // sphere body — soft ocean-blue tint
+      const g = ctx.createRadialGradient(cx - R * 0.36, cy - R * 0.42, R * 0.12, cx, cy, R * 1.12);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, '#eaf2fb'); g.addColorStop(1, '#cfe0f2');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fillStyle = g; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(40,80,140,.10)'; ctx.stroke();
+      // dotted border ring all around the earth
+      ctx.save(); ctx.setLineDash([2, 11]); ctx.lineCap = 'round';
+      ctx.lineWidth = 3.5; ctx.strokeStyle = 'rgba(216,30,44,.30)';
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.045, 0, 7); ctx.stroke();
+      ctx.restore();
+      ctx.lineWidth = 1.4; ctx.lineCap = 'round';
+      for (const ln of grid) {
+        for (let i = 0; i < ln.length - 1; i++) {
+          const a = rp(ln[i].x, ln[i].y, ln[i].z, rot), b = rp(ln[i + 1].x, ln[i + 1].y, ln[i + 1].z, rot);
+          const zz = (a.z + b.z) / 2;
+          if (zz < -0.05) continue;
+          const dep = (zz + 1) / 2;
+          ctx.strokeStyle = 'rgba(38,74,128,' + (zz > 0 ? 0.08 + dep * 0.18 : 0.05) + ')';
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      // soft sphere shading overlay
+      const sh = ctx.createRadialGradient(cx - R * 0.4, cy - R * 0.45, R * 0.1, cx, cy, R);
+      sh.addColorStop(0, 'rgba(255,255,255,.35)'); sh.addColorStop(0.7, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(26,26,26,.06)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fillStyle = sh; ctx.fill();
+      // markers (front), declutter stickers via collision test
+      const pulse = (now % 2200) / 2200;
+      const fronts = markers.map(m => ({ m, p: rp(m.ux, m.uy, m.uz, rot) })).filter(o => o.p.z > 0.05).sort((a, b) => b.p.z - a.p.z);
+      const placed = [];
+      for (const o of fronts) {
+        const p = o.p, dep = 0.62 + ((p.z + 1) / 2) * 0.46;
+        // pin
+        ctx.beginPath(); ctx.arc(p.x, p.y, 15 * dep * (0.5 + pulse), 0, 7);
+        ctx.fillStyle = 'rgba(216,30,44,' + (0.32 * (1 - pulse)) + ')'; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, 7 * dep, 0, 7); ctx.fillStyle = '#D81E2C'; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, 3 * dep, 0, 7); ctx.fillStyle = '#fff'; ctx.fill();
+        const fw = 74 * dep, fh = 44 * dep;
+        const fx = p.x - fw / 2, fy = p.y - 26 * dep - fh;
+        const rect = { x: fx, y: fy, w: fw, h: fh };
+        const hit = placed.some(q => !(rect.x > q.x + q.w + 6 || rect.x + rect.w < q.x - 6 || rect.y > q.y + q.h + 6 || rect.y + rect.h < q.y - 6));
+        if (hit) continue;
+        placed.push(rect);
+        ctx.strokeStyle = 'rgba(216,30,44,.4)'; ctx.lineWidth = 1.4; ctx.setLineDash([3, 4]);
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, fy + fh); ctx.stroke(); ctx.setLineDash([]);
+        ctx.save(); ctx.shadowColor = 'rgba(26,26,26,.18)'; ctx.shadowBlur = 11 * dep; ctx.shadowOffsetY = 4 * dep;
+        ctx.fillStyle = '#fff'; this.roundRect(ctx, fx, fy, fw, fh, 11 * dep); ctx.fill(); ctx.restore();
+        const flw = 30 * dep, flh = 21 * dep;
+        this.drawFlag(ctx, o.m.code, fx + 9 * dep, fy + (fh - flh) / 2, flw, flh);
+        ctx.fillStyle = '#1A1A1A'; ctx.font = '600 ' + (17 * dep) + "px 'Google Sans Flex', sans-serif";
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText(o.m.code, fx + 9 * dep + flw + 7 * dep, fy + fh / 2 + 1);
+      }
+      // passenger airliner silhouette along orbit heading
+      const pa = now / 1000 * 0.5;
+      const cur = orbit(pa), nxt = orbit(pa + 0.04);
+      const heading = Math.atan2(nxt.y - cur.y, nxt.x - cur.x);
+      ctx.save(); ctx.translate(cur.x, cur.y); ctx.rotate(heading + Math.PI / 2); ctx.scale(2.5, 2.5); ctx.translate(-12, -12);
+      ctx.fillStyle = '#D81E2C'; ctx.shadowColor = 'rgba(216,30,44,.32)'; ctx.shadowBlur = 6; ctx.shadowOffsetY = 1.5;
+      ctx.fill(new Path2D('M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'));
+      ctx.restore();
+      rot += 0.0052;
+      this._globeRAF = requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  renderVals() {
+    const s = this.state;
+    const destinations = [
+      { name: 'United Kingdom', flag: '🇬🇧', code: 'UK', unis: '160+ Universities', courses: 'Business · Engineering · Medicine' },
+      { name: 'United States', flag: '🇺🇸', code: 'USA', unis: '200+ Universities', courses: 'Tech · MBA · Research' },
+      { name: 'Canada', flag: '🇨🇦', code: 'CA', unis: '90+ Universities', courses: 'IT · Healthcare · PR Pathways' },
+      { name: 'Australia', flag: '🇦🇺', code: 'AU', unis: '80+ Universities', courses: 'Nursing · Engineering · IT' },
+      { name: 'New Zealand', flag: '🇳🇿', code: 'NZ', unis: '30+ Universities', courses: 'Agriculture · IT · Business' },
+      { name: 'Germany', flag: '🇩🇪', code: 'DE', unis: '120+ Universities', courses: 'Engineering · Auto · Research' },
+      { name: 'Turkey', flag: '🇹🇷', code: 'TR', unis: '60+ Universities', courses: 'Medicine · Engineering' },
+      { name: 'Cyprus', flag: '🇨🇾', code: 'CY', unis: '25+ Universities', courses: 'Business · Tourism' },
+      { name: 'Romania', flag: '🇷🇴', code: 'RO', unis: '40+ Universities', courses: 'Medicine · Dentistry' },
+      { name: 'Hungary', flag: '🇭🇺', code: 'HU', unis: '35+ Universities', courses: 'Medicine · Engineering' },
+      { name: 'Finland', flag: '🇫🇮', code: 'FI', unis: '30+ Universities', courses: 'Tech · Design · Research' },
+      { name: 'Sweden', flag: '🇸🇪', code: 'SE', unis: '40+ Universities', courses: 'Sustainability · IT' }
+    ];
+    const services = [
+      { icon: 'file-check',     title: 'Study Visa Counselling', desc: 'One-on-one guidance to match your profile to the right country and visa route.' },
+      { icon: 'graduation-cap', title: 'University Selection',   desc: 'Shortlist the best-fit universities for your goals, budget and grades.' },
+      { icon: 'file-text',      title: 'Admission Processing',   desc: 'End-to-end application handling, SOPs and document preparation.' },
+      { icon: 'book-open',      title: 'IELTS / PTE Prep',       desc: 'Structured coaching and mock tests to hit your target band score.' },
+      { icon: 'shield-check',   title: 'Visa Documentation',     desc: 'Accurate, compliant file building for a high visa approval rate.' },
+      { icon: 'award',          title: 'Scholarship Guidance',   desc: 'Find and apply for the funding and merit scholarships you qualify for.' },
+      { icon: 'plane',          title: 'Pre-Departure Briefing', desc: 'Everything you need to know before you fly — checklist to culture.' },
+      { icon: 'home',           title: 'Accommodation Help',     desc: 'Verified student housing options near your campus.' },
+      { icon: 'map-pin',        title: 'Post-Arrival Support',   desc: 'Airport pickup, local SIM, bank account and settling-in assistance.' }
+    ].map(x => ({ ...x, iconEl: this.icon(x.icon, { size: 28, stroke: '#fff', strokeWidth: 2 }) }));
+    const whyChoose = [
+      { icon: 'users', title: 'Experienced Counsellors', desc: 'A team that has placed thousands of students worldwide.' },
+      { icon: 'check-circle', title: '100% Transparent Process', desc: 'No hidden fees. You always know where your file stands.' },
+      { icon: 'trending-up', title: 'High Visa Success Rate', desc: 'Compliance-first documentation built to get approved.' },
+      { icon: 'route', title: 'Personalized Roadmap', desc: 'A plan mapped to your goals, timeline and budget.' }
+    ].map(x => ({ ...x, iconEl: this.icon(x.icon, { size: 23 }) }));
+    const values = [
+      { icon: 'shield-check', title: 'Trust', desc: 'Honest, transparent advice.' },
+      { icon: 'award', title: 'Experience', desc: '10+ years of expertise.' },
+      { icon: 'globe', title: 'Global Network', desc: '12+ countries covered.' }
+    ].map(x => ({ ...x, iconEl: this.icon(x.icon, { size: 21 }) }));
+    const steps = [
+      { n: '01', title: 'Free Consultation', desc: 'Tell us your goals in a free 30-minute call.' },
+      { n: '02', title: 'Profile Assessment', desc: 'We evaluate your grades, budget and ambitions.' },
+      { n: '03', title: 'University Shortlisting', desc: 'Best-fit universities and courses, matched to you.' },
+      { n: '04', title: 'Application & Visa', desc: 'We handle admissions and visa documentation.' },
+      { n: '05', title: 'Pre-Departure', desc: 'Briefing, accommodation and travel sorted.' },
+      { n: '06', title: 'Fly Out', desc: 'Board your flight and build your future abroad.' }
+    ];
+    const partners = [
+      { name: 'Oxford', in: 'OX' }, { name: 'Toronto', in: 'TO' }, { name: 'Monash', in: 'MO' },
+      { name: 'TU Munich', in: 'TM' }, { name: 'Auckland', in: 'AU' }, { name: 'Lund', in: 'LU' },
+      { name: 'Helsinki', in: 'HE' }, { name: 'UCL', in: 'UC' }, { name: 'McGill', in: 'MG' },
+      { name: 'Sydney', in: 'SY' }, { name: 'Vienna', in: 'VI' }, { name: 'Warwick', in: 'WA' }
+    ];
+    const testimonials = [
+      { name: 'Ayesha Khan', country: 'the UK', code: 'UK', text: 'Future Career Hub handled my entire UK application and visa. I got my approval in record time and felt supported at every single step.' },
+      { name: 'Bilal Ahmed', country: 'Canada', code: 'CA', text: 'From shortlisting to landing in Toronto, the team was transparent and fast. The best decision I made for my career.' },
+      { name: 'Sana Tariq', country: 'Australia', code: 'AU', text: 'They found me a scholarship I didn\u2019t even know I qualified for. Now I\u2019m studying in Sydney \u2014 thank you, FCH.' },
+      { name: 'Hamza Raza', country: 'Germany', code: 'DE', text: 'Studying in Germany felt impossible until FCH mapped out the whole route. Clear, honest and genuinely helpful.' }
+    ];
+    const t = testimonials[s.activeT];
+    const faqs = [
+      { q: 'How long does the visa process take?', a: 'It varies by country, but most student visas take 3\u20138 weeks once your documents are ready. We prepare your file to be compliant from day one to avoid delays.' },
+      { q: 'Do you charge a consultation fee?', a: 'No. Your first 30-minute consultation is completely free, with no commitment.' },
+      { q: 'What documents do I need to start?', a: 'Your academic transcripts, passport, and any English test scores you have. We\u2019ll give you a full checklist tailored to your destination on the first call.' },
+      { q: 'Can you help with scholarships?', a: 'Yes. We identify scholarships and funding you qualify for and guide you through every application.' },
+      { q: 'Which countries do you cover?', a: 'The UK, USA, Canada, Australia, New Zealand, Germany, Turkey, Cyprus, Romania, Hungary, Finland and Sweden \u2014 with more added regularly.' }
+    ].map((f, i) => ({ ...f, open: s.openFaq === i, rot: s.openFaq === i ? 'rotate(45deg)' : 'rotate(0deg)', toggle: () => this.setState({ openFaq: s.openFaq === i ? -1 : i }) }));
+    const branches = [
+      { city: 'Head Office', addr: 'Address to be confirmed', phone: '0343-3350139' },
+      { city: 'Branch 02', addr: 'Address to be confirmed', phone: '0343-3350139' }
+    ];
+    const blog = [
+      { tag: 'Visa Tips', title: '5 documents that decide your student visa', date: 'Jun 2026', bg: 'linear-gradient(135deg,#D81E2C,#a01420)' },
+      { tag: 'Scholarships', title: 'Fully-funded scholarships open this fall', date: 'May 2026', bg: 'linear-gradient(135deg,#1A1A1A,#3a3a3a)' },
+      { tag: 'Study Guide', title: 'UK vs Canada: which is right for you?', date: 'May 2026', bg: 'linear-gradient(135deg,#D81E2C,#1A1A1A)' }
+    ];
+    const gallery = [
+      { label: 'Pre-departure seminar', col: 'span 2', row: 'span 1', bg: 'linear-gradient(135deg,#D81E2C,#7a0f17)' },
+      { label: 'Student send-off', col: 'span 1', row: 'span 1', bg: 'linear-gradient(135deg,#1A1A1A,#444)' },
+      { label: 'Counselling session', col: 'span 1', row: 'span 1', bg: 'linear-gradient(135deg,#8A8A95,#5A5A5A)' },
+      { label: 'Visa success day', col: 'span 1', row: 'span 1', bg: 'linear-gradient(135deg,#1A1A1A,#D81E2C)' },
+      { label: 'Education expo', col: 'span 1', row: 'span 1', bg: 'linear-gradient(135deg,#D81E2C,#c01a27)' },
+      { label: 'Office team', col: 'span 2', row: 'span 1', bg: 'linear-gradient(135deg,#2a2a2a,#1A1A1A)' }
+    ];
+    const accreditations = [
+      { name: 'British Council', mono: 'BC', tag: 'Accredited Partner', color: '#0B2B5C', bg: '#E7ECF5', fs: '20px' },
+      { name: 'ICEF', mono: 'ICEF', tag: 'Certified Agency', color: '#E2001A', bg: '#FBE5E8', fs: '16px' },
+      { name: 'IDP Education', mono: 'IDP', tag: 'Official Partner', color: '#D4002A', bg: '#FBE5E9', fs: '20px' },
+      { name: 'IELTS', mono: 'IELTS', tag: 'Test Partner', color: '#E4002B', bg: '#FCE6EB', fs: '15px' },
+      { name: 'PTE Academic', mono: 'PTE', tag: 'Test Partner', color: '#1C2B5E', bg: '#E7EAF3', fs: '20px' },
+      { name: 'ETS TOEFL', mono: 'TOEFL', tag: 'Test Partner', color: '#0B6CB7', bg: '#E4F0FA', fs: '13px' }
+    ];
+    const universities = [
+      { name: 'University of Oxford', mono: 'OX', country: 'UK', rank: 'QS Top 5', banner: 'linear-gradient(135deg,#0B2B5C,#1E4C8F)', fs: '22px' },
+      { name: 'University of Toronto', mono: 'UofT', country: 'CA', rank: 'QS Top 25', banner: 'linear-gradient(135deg,#002A5C,#0055A4)', fs: '15px' },
+      { name: 'Monash University', mono: 'MON', country: 'AU', rank: 'QS Top 45', banner: 'linear-gradient(135deg,#006DAE,#00A0D2)', fs: '17px' },
+      { name: 'Technical University of Munich', mono: 'TUM', country: 'DE', rank: 'QS Top 40', banner: 'linear-gradient(135deg,#1A1A1A,#3A3A3A)', fs: '18px' },
+      { name: 'University of Auckland', mono: 'UoA', country: 'NZ', rank: 'QS Top 70', banner: 'linear-gradient(135deg,#00467F,#0073B7)', fs: '17px' },
+      { name: 'Lund University', mono: 'LU', country: 'SE', rank: 'QS Top 100', banner: 'linear-gradient(135deg,#9B1B30,#C8324A)', fs: '22px' },
+      { name: 'University of Helsinki', mono: 'HEL', country: 'FI', rank: 'QS Top 110', banner: 'linear-gradient(135deg,#003580,#0A5BC0)', fs: '18px' },
+      { name: 'University College London', mono: 'UCL', country: 'UK', rank: 'QS Top 10', banner: 'linear-gradient(135deg,#500778,#7B2FA8)', fs: '20px' }
+    ];
+    const criteria = [
+      { icon: 'graduation-cap', title: 'Academic record', desc: 'Completed your previous level with solid grades (transcripts & certificates).' },
+      { icon: 'book-open', title: 'English proficiency', desc: 'IELTS 6.0\u20136.5+ / PTE 50+ / TOEFL \u2014 or qualify for a waiver.' },
+      { icon: 'file-text', title: 'Documentation', desc: 'Valid passport, SOP, and recommendation letters.' },
+      { icon: 'shield-check', title: 'Financial proof', desc: 'Bank statements showing tuition + living costs for the visa.' }
+    ].map(x => ({ ...x, iconEl: this.icon(x.icon, { size: 20 }) }));
+    const requirements = [
+      'Academic transcripts & degree/diploma certificates',
+      'Valid passport (6+ months validity)',
+      'English test score (IELTS / PTE / TOEFL) or waiver',
+      'Statement of Purpose (SOP) \u2014 we help you write it',
+      'Financial proof (bank statement / sponsor letter)',
+      'Passport-size photographs & ID documents'
+    ];
+    const eduMap = { 'High School (12 years)': "Bachelor\u2019s Degree", "Bachelor's Degree": "Master\u2019s Degree", "Master's Degree": "Master\u2019s / PhD" };
+    const eligProgram = eduMap[s.eligEdu] || 'study program';
+    const eligTestNote = s.eligTest === 'Not yet taken'
+      ? "No test yet? No problem \u2014 we\u2019ll enrol you in IELTS/PTE prep and target the band your university needs."
+      : s.eligTest === 'English-medium (may be exempt)'
+        ? "You may qualify for an English-test waiver \u2014 we\u2019ll confirm it directly with the university."
+        : "Your English scores are ready \u2014 that speeds your application straight to admissions.";
+    return {
+      destinations, services, whyChoose, values, steps, branches, blog, gallery, faqs,
+      accreditations, universities, criteria, requirements,
+      eligEdu: s.eligEdu, eligDest: s.eligDest, eligTest: s.eligTest,
+      eligChecked: s.eligChecked, eligNotChecked: !s.eligChecked,
+      eligProgram, eligTestNote,
+      eligDestSuffix: s.eligDest ? ' in ' + s.eligDest : '',
+      checkOpacity: (s.eligEdu && s.eligDest && s.eligTest) ? 1 : 0.55,
+      onEduChange: (e) => this.setState({ eligEdu: e.target.value, eligChecked: false }),
+      onDestChange: (e) => this.setState({ eligDest: e.target.value, eligChecked: false }),
+      onTestChange: (e) => this.setState({ eligTest: e.target.value, eligChecked: false }),
+      checkElig: () => { if (s.eligEdu && s.eligDest && s.eligTest) this.setState({ eligChecked: true }); },
+      partnersLoop: [...partners, ...partners],
+      partnersLoop2: [...partners.slice().reverse(), ...partners.slice().reverse()],
+      cStudents: s.cStudents.toLocaleString() + '+',
+      cPartners: s.cPartners + '+',
+      cCountries: s.cCountries + '+',
+      destOpen: s.destOpen, servOpen: s.servOpen,
+      openDestinations: () => { clearTimeout(this._menuTimer); this.setState({ destOpen: true, servOpen: false }); },
+      openServices: () => { clearTimeout(this._menuTimer); this.setState({ servOpen: true, destOpen: false }); },
+      closeMenu: () => this.setState({ destOpen: false, servOpen: false }),
+      scheduleCloseMenu: () => { this._menuTimer = setTimeout(() => this.setState({ destOpen: false, servOpen: false }), 200); },
+      cancelCloseMenu: () => clearTimeout(this._menuTimer),
+      socialOpen: s.socialOpen,
+      socialRot: s.socialOpen ? 'rotate(135deg)' : 'rotate(0deg)',
+      toggleSocial: () => this.setState({ socialOpen: !s.socialOpen }),
+      tText: t.text, tName: t.name, tCountry: t.country, tCode: t.code, tInitial: t.name.charAt(0),
+      tStars: [1, 2, 3, 4, 5],
+      nextT: () => this.setState({ activeT: (s.activeT + 1) % testimonials.length }),
+      prevT: () => this.setState({ activeT: (s.activeT - 1 + testimonials.length) % testimonials.length }),
+      sent: s.sent, notSent: !s.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

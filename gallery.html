@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Future Career Hub Faisalabad Events & Student Success Stories</title>
+  <meta name="description" content="See photos and videos from Future Career Hub's student events, orientation days, and study abroad success stories in Faisalabad, Pakistan." />
+  <meta name="keywords" content="Future Career Hub Faisalabad events, study abroad success stories Pakistan, student visa success Pakistan" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gallery — Future Career Hub Faisalabad" />
+  <meta property="og:description" content="Photos and videos from FCH student events, orientation days, and success stories." />
+  <meta property="og:image" content="assets/fch-logo.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" href="assets/android-chrome-192x192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .gallery-filters { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:36px; }
+    .filter-btn { padding:9px 20px; border-radius:999px; border:1.5px solid rgba(26,26,26,.12); background:#fff; font-family:'Google Sans Flex',sans-serif; font-size:13.5px; font-weight:500; color:#5A5A5A; cursor:pointer; transition:all .2s; }
+    .filter-btn:hover,.filter-btn.active { background:#D81E2C; border-color:#D81E2C; color:#fff; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .gallery-item { border-radius:18px; overflow:hidden; position:relative; cursor:pointer; display:block; }
+    .gallery-item .gal-img { width:100%; aspect-ratio:1/1; display:block; background:var(--grad); transition:transform .4s; }
+    .gallery-item:hover .gal-img { transform:scale(1.04); }
+    .gallery-item .gal-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,26,26,.8) 0%,transparent 50%); opacity:0; transition:opacity .3s; display:flex; align-items:flex-end; padding:18px; }
+    .gallery-item:hover .gal-overlay { opacity:1; }
+    .gal-caption { color:#fff; font-size:13px; font-weight:500; }
+    .gal-badge { font-size:11px; background:rgba(255,255,255,.2); border-radius:999px; padding:3px 10px; display:inline-block; margin-bottom:6px; }
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:9999; align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox-inner { position:relative; max-width:90vw; max-height:90vh; }
+    .lightbox-img { max-width:100%; max-height:85vh; border-radius:14px; display:block; }
+    .lightbox-close { position:absolute; top:-18px; right:-18px; width:38px; height:38px; border-radius:50%; background:#D81E2C; color:#fff; border:none; cursor:pointer; font-size:20px; display:flex; align-items:center; justify-content:center; }
+    .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.12); color:#fff; border:none; border-radius:50%; width:44px; height:44px; cursor:pointer; font-size:22px; display:flex; align-items:center; justify-content:center; }
+    .lightbox-prev { left:-56px; }
+    .lightbox-next { right:-56px; }
+    .video-reel { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:760px; margin:0 auto; }
+    .insta-embed-wrap { max-width:400px; margin:28px auto 0; display:flex; justify-content:center; }
+    .video-card { border-radius:20px; overflow:hidden; background:#000; position:relative; aspect-ratio:9/16; box-shadow:0 16px 40px rgba(26,26,26,.2); }
+    .video-card video { width:100%; height:100%; object-fit:cover; display:block; background:#000; }
+    .counter-band { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    @media(max-width:1024px){ .gallery-grid{grid-template-columns:repeat(3,1fr);} .counter-band{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .video-reel{grid-template-columns:1fr 1fr;max-width:100%;} .counter-band{grid-template-columns:repeat(2,1fr);} .gallery-filters{gap:6px;} .filter-btn{padding:7px 14px;font-size:12.5px;} }
+    @media(max-width:560px){ .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px;} .video-reel{grid-template-columns:1fr;max-width:280px;} }
+    @media(max-width:480px){ .counter-band{grid-template-columns:1fr 1fr;} .lightbox-prev{left:-44px;} .lightbox-next{right:-44px;} }
+    @media(max-width:375px){ .lightbox-prev,.lightbox-next{display:none;} }
+  </style>
+</head>
+<body>
+<div id="header-slot"></div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-blob"></div>
+  <div class="container page-hero-grid">
+    <div>
+      <p class="eyebrow">Gallery</p>
+      <h1>Stories behind<br/><span style="color:#D81E2C;">every success</span></h1>
+      <p class="lead" style="margin:16px 0 0;">Photos and moments from orientations, workshops, departure days, and celebrations of our students reaching their dream universities.</p>
+    </div>
+    <div class="hero-visual">
+      <div style="position:relative;width:100%;max-width:340px;height:340px;">
+        <div class="fch-photo-frame" style="position:absolute;top:6%;left:6%;width:170px;height:200px;border-radius:16px;overflow:hidden;box-shadow:0 20px 44px rgba(26,26,26,.18);transform:rotate(-7deg);animation:heroFloat 5.5s ease-in-out infinite;">
+            <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1/success-story-11.jpg" alt="Pre-departure seminar" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%);"></div>
+            <span style="position:absolute;left:16px;bottom:16px;color:#fff;font-size:13px;font-weight:500;">Pre-departure seminar</span>
+        </div>
+        <div class="fch-photo-frame" style="position:absolute;top:18%;right:2%;width:160px;height:180px;border-radius:16px;overflow:hidden;box-shadow:0 20px 44px rgba(26,26,26,.2);transform:rotate(6deg);animation:heroFloat2 6.5s ease-in-out infinite;">
+            <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1/moment-that-matters-9.jpg" alt="Student send-off" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%);"></div>
+            <span style="position:absolute;left:16px;bottom:16px;color:#fff;font-size:13px;font-weight:500;">Student send-off</span>
+        </div>
+        <div class="fch-photo-frame" style="position:absolute;bottom:4%;left:18%;width:150px;height:130px;border-radius:16px;overflow:hidden;box-shadow:0 20px 44px rgba(26,26,26,.18);transform:rotate(3deg);animation:heroFloat 7s ease-in-out infinite;">
+            <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1/Malaysia-1.jpg" alt="Visa success day" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%);"></div>
+            <span style="position:absolute;left:14px;bottom:14px;color:#fff;font-size:12.5px;font-weight:500;">Visa success day</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="section" style="padding-bottom:0;">
+  <div class="container">
+    <div class="counter-band reveal snap-x snap-sm">
+      <div class="card" style="text-align:center;padding:28px 20px;">
+        <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:#D81E2C;" data-counter="500">0</div>
+        <div style="font-size:13.5px;color:#5A5A5A;margin-top:4px;">Photos &amp; Videos</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px 20px;">
+        <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:#D81E2C;" data-counter="48">0</div>
+        <div style="font-size:13.5px;color:#5A5A5A;margin-top:4px;">Events Documented</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px 20px;">
+        <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:#D81E2C;" data-counter="12">0</div>
+        <div style="font-size:13.5px;color:#5A5A5A;margin-top:4px;">Countries Featured</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px 20px;">
+        <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:#D81E2C;" data-counter="2500">0</div>
+        <div style="font-size:13.5px;color:#5A5A5A;margin-top:4px;">Happy Faces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Photo Gallery</p>
+      <h2 style="margin:14px 0 14px;">Moments that matter</h2>
+    </div>
+
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All Photos</button>
+      <button class="filter-btn" onclick="filterGallery('orientation',this)">Orientations</button>
+      <button class="filter-btn" onclick="filterGallery('departure',this)">Departure Days</button>
+      <button class="filter-btn" onclick="filterGallery('seminar',this)">Seminars</button>
+      <button class="filter-btn" onclick="filterGallery('celebration',this)">Celebrations</button>
+      <button class="filter-btn" onclick="filterGallery('office',this)">Office Life</button>
+    </div>
+
+    <div class="gallery-grid reveal" id="gallery-grid">
+
+      <!-- Row 1 -->
+      <div class="gallery-item" data-cat="orientation" onclick="openLightbox(0)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-1.jpg" alt="Orientation Day" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Orientation</div><div class="gal-caption">UK Orientation — Spring Batch 2025</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="departure" onclick="openLightbox(1)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-2.jpg" alt="Airport Send-off" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Departure</div><div class="gal-caption">Airport Send-off — Canada Batch</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="seminar" onclick="openLightbox(2)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-3.jpg" alt="IELTS Strategy Masterclass" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Seminar</div><div class="gal-caption">IELTS Strategy Masterclass — Feb 2025</div></div></div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="gallery-item" data-cat="celebration" onclick="openLightbox(3)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-4.jpg" alt="Visa Approval Celebration" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Celebration</div><div class="gal-caption">Visa Approval Celebration — 2024 Batch</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="orientation" onclick="openLightbox(4)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-5.jpg" alt="Australia Orientation" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Orientation</div><div class="gal-caption">Australia Orientation — Summer 2025</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="office" onclick="openLightbox(5)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-6.jpg" alt="Consultation Session" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Office</div><div class="gal-caption">Consultation Session — Faisalabad Office</div></div></div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="gallery-item" data-cat="seminar" onclick="openLightbox(6)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-7.jpg" alt="Study in Germany Webinar" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Seminar</div><div class="gal-caption">Study in Germany Webinar — 300+ Attendees</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="departure" onclick="openLightbox(7)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-8.jpg" alt="USA-Bound Students" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Departure</div><div class="gal-caption">USA-Bound Students — JFK Batch</div></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="celebration" onclick="openLightbox(8)">
+        <div class="gal-img" style="position:relative;overflow:hidden;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1/moment-that-matters-9.jpg" alt="Scholarship Winners" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="gal-overlay"><div><div class="gal-badge">Celebration</div><div class="gal-caption">Scholarship Winners — 2025</div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="section bg-pink">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Student Stories</p>
+      <h2 style="margin:14px 0 14px;">Watch their journeys</h2>
+      <p class="lead">Real stories from real students — hear how FCH helped them navigate every step of their study abroad journey.</p>
+    </div>
+    <div class="video-reel reveal">
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="https://res.cloudinary.com/dnvkirfyz/video/upload/q_auto,w_720,c_limit/v1786087169/videos-1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="https://res.cloudinary.com/dnvkirfyz/video/upload/q_auto,w_720,c_limit/v1786087095/video-2.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="https://res.cloudinary.com/dnvkirfyz/video/upload/q_auto,w_720,c_limit/v1786088138/video-3.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+    <div class="insta-embed-wrap reveal">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbf-t1FMrbv/" data-instgrm-version="14" style="width:100%;margin:0;"></blockquote>
+    </div>
+  </div>
+</section>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<!-- CTA -->
+<section class="section bg-pink">
+  <div class="container reveal">
+    <div class="cta-banner">
+      <p class="eyebrow" style="color:rgba(255,255,255,.7);">Be the next success story</p>
+      <h2 style="color:#fff;margin:16px 0;">Your journey starts with<br/>one free consultation</h2>
+      <a href="partner.html" class="btn" style="background:#fff;color:#D81E2C;">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <div id="lightbox-content" style="width:600px;height:400px;border-radius:14px;background:#222;"></div>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<script src="js/main.js?v=2"></script>
+<script>
+  FCH.init('gallery','root');
+
+  let currentImg = 0;
+  const imgs = document.querySelectorAll('.gallery-item .gal-img');
+
+  function openLightbox(idx) {
+    currentImg = idx;
+    const lb = document.getElementById('lightbox');
+    const src = imgs[idx].cloneNode(true);
+    src.style.height = '400px';
+    src.style.width = '600px';
+    src.style.borderRadius = '14px';
+    document.getElementById('lightbox-content').innerHTML = '';
+    document.getElementById('lightbox-content').appendChild(src);
+    lb.classList.add('open');
+  }
+  function closeLightbox(e) {
+    if(!e || e.target === document.getElementById('lightbox')) {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  }
+  function navLightbox(dir) {
+    currentImg = (currentImg + dir + imgs.length) % imgs.length;
+    openLightbox(currentImg);
+  }
+
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

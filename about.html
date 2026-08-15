@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Best Study Abroad Consultants in Faisalabad, Pakistan | Future Career Hub</title>
+  <meta name="description" content="Learn about Future Career Hub — Faisalabad and Pakistan's most trusted study abroad consultancy. Meet our team, mission, and values." />
+  <meta name="keywords" content="study abroad consultants Faisalabad, study abroad consultants Pakistan, best overseas education consultancy Pakistan, about Future Career Hub" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About Future Career Hub — Study Abroad Consultants in Faisalabad, Pakistan" />
+  <meta property="og:description" content="Learn about Future Career Hub — Faisalabad and Pakistan's most trusted study abroad consultancy." />
+  <meta property="og:image" content="assets/fch-logo.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" href="assets/android-chrome-192x192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background:linear-gradient(180deg,#fff 0%,#F5F6FA 100%); }
+
+    .mission-card { background:linear-gradient(135deg,#D81E2C,#9c1119); border-radius:24px; padding:48px; color:#fff; position:relative; overflow:hidden; }
+    .mission-card::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.12); }
+    .mission-card h3 { font-family:'Syne',sans-serif; font-size:24px; font-weight:700; color:#fff; margin-bottom:14px; position:relative; }
+    .mission-card p { color:rgba(255,255,255,.75); font-size:15px; line-height:1.75; position:relative; }
+
+    /* ── Team section ── */
+    .team-section-header { position:relative; margin-bottom:8px; }
+    .team-watermark {
+      position:absolute;
+      top:-64px; left:-6px;
+      font-family:'Syne',sans-serif;
+      font-weight:800;
+      font-size:clamp(70px,11vw,150px);
+      line-height:.8;
+      color:rgba(26,26,26,.05);
+      z-index:0;
+      user-select:none;
+      pointer-events:none;
+      white-space:nowrap;
+    }
+
+    .team-grid {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:nowrap;
+      gap:18px;
+      max-width:1100px;
+      margin:76px auto 0;
+      position:relative;
+      z-index:1;
+    }
+    .team-tile {
+      position:relative;
+      width:196px;
+      aspect-ratio:2/3;
+      border-radius:16px;
+      overflow:hidden;
+      flex-shrink:0;
+      cursor:pointer;
+      box-shadow:0 10px 26px rgba(26,26,26,.13);
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .team-tile:nth-child(1) { transform:translateY(18px); }
+    .team-tile:nth-child(2) { transform:translateY(-22px); }
+    .team-tile:nth-child(4) { transform:translateY(-22px); }
+    .team-tile:nth-child(5) { transform:translateY(18px); }
+    .team-tile:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(216,30,44,.28); }
+    .team-tile:nth-child(1):hover { transform:translateY(12px); }
+    .team-tile:nth-child(2):hover, .team-tile:nth-child(4):hover { transform:translateY(-28px); }
+    .team-tile:nth-child(5):hover { transform:translateY(12px); }
+
+    .team-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; transition:opacity .35s ease; }
+    .team-tile:hover .team-photo { opacity:0; }
+
+    .team-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(165deg,#D81E2C 0%,#8c1119 100%);
+      opacity:0;
+      transform:scale(.94);
+      transition:opacity .35s ease, transform .35s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+    .team-tile:hover .team-overlay { opacity:1; transform:scale(1); }
+    .team-overlay-avatar { width:60px; height:60px; border-radius:50%; overflow:hidden; border:2.5px solid rgba(255,255,255,.5); margin-bottom:12px; flex-shrink:0; }
+    .team-overlay-avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .team-overlay .team-name { color:#fff; font-family:'Syne',sans-serif; font-weight:700; font-size:14.5px; }
+    .team-overlay .team-role { color:rgba(255,255,255,.85); font-size:10.5px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; margin-top:4px; }
+    .team-overlay .team-desc { color:rgba(255,255,255,.78); font-size:12px; line-height:1.55; margin-top:12px; }
+
+    .team-linkedin { position:absolute; left:50%; bottom:16px; transform:translate(-50%,10px); width:32px; height:32px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s ease .05s, transform .3s ease .05s; box-shadow:0 6px 16px rgba(0,0,0,.25); }
+    .team-tile:hover .team-linkedin { opacity:1; transform:translate(-50%,0); }
+    .team-linkedin:hover { background:#D81E2C; }
+    .team-linkedin:hover svg { fill:#fff; }
+    .team-linkedin svg { fill:#0A66C2; transition:fill .2s ease; }
+
+    .team-tile.featured {
+      width:236px;
+      z-index:2;
+      border:4px solid #fff;
+      box-shadow:0 0 0 3px #D81E2C, 0 20px 46px rgba(216,30,44,.32);
+    }
+    .team-tile.featured:hover { box-shadow:0 0 0 3px #D81E2C, 0 26px 54px rgba(216,30,44,.42); }
+
+    @media(max-width:900px) {
+      .team-grid { gap:10px; margin-top:44px; }
+      .team-tile { width:130px; }
+      .team-tile.featured { width:158px; }
+      .team-watermark { top:-44px; }
+    }
+    @media(max-width:560px) {
+      .team-grid { flex-wrap:wrap; }
+      .team-tile { width:44%; }
+      .team-tile.featured { width:62%; order:-1; margin-bottom:6px; }
+      .team-tile:nth-child(1), .team-tile:nth-child(2), .team-tile:nth-child(4), .team-tile:nth-child(5) { transform:translateY(0); }
+      .team-watermark { display:none; }
+    }
+
+    .value-row { display:flex; align-items:flex-start; gap:20px; padding:24px; background:#fff; border:1px solid rgba(26,26,26,.07); border-radius:16px; margin-bottom:14px; }
+    .value-icon { flex-shrink:0; width:48px; height:48px; border-radius:12px; background:#FDEAEC; color:#D81E2C; display:flex; align-items:center; justify-content:center; }
+
+    @media(max-width:1024px){
+      .mission-card { padding:36px; }
+    }
+    @media(max-width:768px){
+      .mission-card { padding:28px; border-radius:18px; }
+      .mission-card h3 { font-size:20px; }
+      .value-row { padding:18px; gap:14px; }
+      .value-icon { width:40px; height:40px; }
+    }
+    @media(max-width:480px){
+      .mission-card { padding:20px; }
+      .value-row { flex-direction:column; gap:12px; }
+    }
+  </style>
+<script src="js/main.js?v=2" defer></script>
+</head>
+<body data-page="about" data-root="root">
+  <div id="header-slot"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-blob"></div>
+    <div class="container page-hero-grid" style="position:relative;z-index:1;">
+      <div>
+        <p class="eyebrow">Who We Are</p>
+        <h1>Built on trust,<br/><span style="color:#D81E2C;">driven by outcomes</span></h1>
+        <p class="lead" style="margin-top:16px;margin-bottom:32px;">Since 2015, Future Career Hub has helped thousands of Pakistani students unlock life-changing opportunities at top universities across 12+ countries.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="partner.html" class="btn btn-primary">Book Free Consultation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#team" class="btn btn-outline">Meet Our Team</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-main fch-photo-frame" style="aspect-ratio:2/3;border-radius:22px;">
+          <img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_760,c_limit,f_auto,q_auto/v1786202629/Future_Career_Hub.png" alt="Future Career Hub" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.62) 100%);"></div>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:60px;color:#fff;line-height:1;">10+</div>
+            <div style="color:#fff;font-size:17px;font-weight:500;margin-top:8px;">Years guiding students<br/>to their dream universities</div>
+          </div>
+        </div>
+        <div class="hero-float-card" style="top:18%;left:-8%;">
+          <span class="hero-float-icon" style="background:#FDEAEC;color:#D81E2C;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+          </span>
+          <div><div class="hero-float-title">5,000+ Students</div><div class="hero-float-sub">Placed worldwide</div></div>
+        </div>
+        <div class="hero-float-card alt" style="bottom:10%;right:-6%;">
+          <span class="hero-float-icon" style="background:#D81E2C;color:#fff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div><div class="hero-float-title">98% Visa Success</div><div class="hero-float-sub">Approval rate</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="background:#fff;border-top:1px solid rgba(26,26,26,.06);border-bottom:1px solid rgba(26,26,26,.06);">
+    <div class="container">
+      <div class="stats-bar snap-x snap-sm">
+        <div class="stat-item reveal"><div class="stat-number" data-counter="5000" data-suffix="+">0</div><div class="stat-label">Students Placed</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-counter="98" data-suffix="%">0</div><div class="stat-label">Visa Approval Rate</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-counter="50" data-suffix="+">0</div><div class="stat-label">Partner Universities</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-counter="12" data-suffix="+">0</div><div class="stat-label">Countries</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-counter="10" data-suffix="+">0</div><div class="stat-label">Years Experience</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2-3 reveal" style="gap:60px;">
+        <div>
+          <p class="eyebrow">Our Story</p>
+          <h2 style="margin:14px 0 20px;">From a small office to Pakistan's most trusted consultancy</h2>
+          <p style="font-size:15.5px;line-height:1.8;color:#5A5A5A;margin-bottom:18px;">Future Career Hub was founded in 2015 with a single purpose: to give every Pakistani student an honest, clear, and achievable path to study abroad — regardless of their background or financial status.</p>
+          <p style="font-size:15.5px;line-height:1.8;color:#5A5A5A;margin-bottom:18px;">What started as a two-person team in Faisalabad has grown into a full-service consultancy with offices across the region, a team of 30+ certified counsellors, and partnerships with over 500 universities worldwide.</p>
+          <p style="font-size:15.5px;line-height:1.8;color:#5A5A5A;margin-bottom:30px;">Today we are one of Pakistan's most awarded and recognised study-abroad agencies — certified by the British Council, an official IDP partner, and accredited by leading institutions in the UK, USA, Canada, Australia, and Europe.</p>
+          <a href="partner.html" class="btn btn-primary">Start Your Journey <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2015</div>
+              <div class="timeline-title">Founded in Faisalabad</div>
+              <div class="timeline-desc">Future Career Hub opened its first office in Faisalabad with a team of 2 counsellors and a mission to provide honest, transparent study-abroad guidance.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2017</div>
+              <div class="timeline-title">British Council Partnership</div>
+              <div class="timeline-desc">Became an official British Council-certified partner and IDP Education affiliate, enabling direct university applications for UK institutions.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2019</div>
+              <div class="timeline-title">Expanded to Gojra</div>
+              <div class="timeline-desc">Opened our second office to serve more students across the region. Team grew to 15 counsellors covering 8 countries.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2021</div>
+              <div class="timeline-title">1,000 Students Milestone</div>
+              <div class="timeline-desc">Celebrated placing our 1,000th student abroad despite challenging global conditions. Expanded services to Germany, Netherlands, and Sweden.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2023</div>
+              <div class="timeline-title">Best Consultancy Award</div>
+              <div class="timeline-desc">Received the "Best Study Abroad Consultancy — Pakistan" award. Launched our in-house IELTS preparation programme with certified trainers.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2025</div>
+              <div class="timeline-title">5,000+ Students Placed</div>
+              <div class="timeline-desc">Reached the milestone of 5,000 students placed at universities worldwide. Now covering 12+ countries with 30+ certified counsellors and a 98% visa success rate.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION -->
+  <section class="section bg-pink">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Mission & Vision</p>
+        <h2 style="margin:14px 0 14px;">What drives us every day</h2>
+        <p class="lead">We believe every deserving student should have the chance to study at the world's best universities.</p>
+      </div>
+      <div class="grid-2 reveal">
+        <div class="mission-card">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;">
+            <i class="fa-solid fa-bullseye" style="color:#fff;font-size:22px;"></i>
+          </div>
+          <h3>Our Mission</h3>
+          <p>To empower Pakistani students with accurate, honest, and personalised guidance that transforms their study-abroad dreams into reality — removing complexity, reducing costs, and maximising success at every step.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:24px;padding:48px;">
+          <div style="width:50px;height:50px;border-radius:13px;background:#FDEAEC;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <i class="fa-solid fa-eye" style="color:#D81E2C;font-size:22px;"></i>
+          </div>
+          <h3 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:#1A1A1A;margin-bottom:14px;">Our Vision</h3>
+          <p style="font-size:15px;line-height:1.75;color:#5A5A5A;">To become South Asia's most impactful study-abroad platform — where every student, regardless of background, can access world-class higher education with confidence, clarity, and the full support of a trusted team behind them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Our Core Values</p>
+        <h2 style="margin:14px 0 14px;">The principles we never compromise</h2>
+      </div>
+      <div class="grid-2 reveal">
+        <div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-shield-halved" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Integrity First</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">We never recommend a university or country that isn't genuinely right for you. Our advice is always honest, even if it means fewer fees for us.</p></div>
+          </div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-eye" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Full Transparency</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">No hidden fees. No vague timelines. Every cost, every document requirement, every step is communicated clearly and upfront from day one.</p></div>
+          </div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-users" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Student-Centred</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">Every decision we make is driven by what is best for the student. We personalise every aspect of our service to individual goals, not generic templates.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-circle-check" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Excellence in Execution</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">We prepare every visa file, SOP, and application to the highest standard — because errors cost futures. Our 98% visa success rate reflects this commitment.</p></div>
+          </div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-bolt" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Speed & Responsiveness</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">We respond to every query within 2 hours. Deadlines wait for no one and neither do we — fast, reliable communication is a promise we keep.</p></div>
+          </div>
+          <div class="value-row">
+            <div class="value-icon"><i class="fa-solid fa-handshake" style="font-size:20px;"></i></div>
+            <div><h4 style="margin-bottom:6px;">Long-term Partnership</h4><p style="font-size:14px;color:#5A5A5A;line-height:1.6;">Our relationship doesn't end at visa approval. We support students through arrival, accommodation, bank accounts, and settling in abroad.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section bg-pink" id="team" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="team-section-header reveal" style="position:relative;">
+        <span class="team-watermark">TEAM</span>
+      </div>
+      <div class="section-header reveal" style="position:relative;z-index:1;">
+        <h2 style="margin:0 0 14px;">The experts behind your success</h2>
+        <p class="lead">Our certified counsellors each specialise in specific destinations — hover a photo to meet them. You'll always speak to someone who knows your target country inside and out.</p>
+      </div>
+      <div class="team-grid reveal">
+
+        <div class="team-tile">
+          <img class="team-photo" src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1786088271/Sohaib_Haider-_Business_development_manager.jpg" alt="Sohaib Haider" loading="lazy" />
+          <div class="team-overlay">
+            <div class="team-overlay-avatar"><img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1786088271/Sohaib_Haider-_Business_development_manager.jpg" alt="" /></div>
+            <div class="team-name">Sohaib Haider</div>
+            <div class="team-role">Business Development Manager</div>
+            <div class="team-desc">Builds partnerships and grows our university network.</div>
+          </div>
+          <a href="https://www.linkedin.com/in/sohaib-haider-7351a3182/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Future Career Hub on LinkedIn" onclick="event.stopPropagation()">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>
+          </a>
+        </div>
+
+        <div class="team-tile">
+          <img class="team-photo" src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1786088265/Haseeb_Ashraf-_Branch_Manager.jpg" alt="Haseeb Ashraf" loading="lazy" />
+          <div class="team-overlay">
+            <div class="team-overlay-avatar"><img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1786088265/Haseeb_Ashraf-_Branch_Manager.jpg" alt="" /></div>
+            <div class="team-name">Haseeb Ashraf</div>
+            <div class="team-role">Branch Manager</div>
+            <div class="team-desc">Oversees day-to-day branch operations and student support.</div>
+          </div>
+          <a href="https://www.linkedin.com/in/m-haseeb-ashraf-07b58a247/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Future Career Hub on LinkedIn" onclick="event.stopPropagation()">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>
+          </a>
+        </div>
+
+        <div class="team-tile featured">
+          <img class="team-photo" src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_500,c_limit,f_auto,q_auto/v1786201325/salman_anwaar_ceo.jpg" alt="M. Salman Anwaar" loading="lazy" />
+          <div class="team-overlay">
+            <div class="team-overlay-avatar"><img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1786201325/salman_anwaar_ceo.jpg" alt="" /></div>
+            <div class="team-name">M. Salman Anwaar</div>
+            <div class="team-role">CEO</div>
+            <div class="team-desc">Founded FCH to make honest study-abroad guidance accessible to every student.</div>
+          </div>
+          <a href="https://www.linkedin.com/in/salman-anwaar-29bb93301/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Future Career Hub on LinkedIn" onclick="event.stopPropagation()">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>
+          </a>
+        </div>
+
+        <div class="team-tile">
+          <img class="team-photo" src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1786088267/Rabia_-_Director_Of_Future_Career_Hub_mdnru3.jpg" alt="Rabia" loading="lazy" />
+          <div class="team-overlay">
+            <div class="team-overlay-avatar"><img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1786088267/Rabia_-_Director_Of_Future_Career_Hub_mdnru3.jpg" alt="" /></div>
+            <div class="team-name">Rabia</div>
+            <div class="team-role">Director</div>
+            <div class="team-desc">Sets the vision and leads company-wide strategy.</div>
+          </div>
+          <a href="https://www.linkedin.com/in/rabia-salman-9a6172334/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Future Career Hub on LinkedIn" onclick="event.stopPropagation()">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>
+          </a>
+        </div>
+
+        <div class="team-tile">
+          <img class="team-photo" src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_400,c_limit,f_auto,q_auto/v1786088264/Faiz_Tahir_-Head_Of_Language_Department.jpg" alt="Faiz Tahir" loading="lazy" />
+          <div class="team-overlay">
+            <div class="team-overlay-avatar"><img src="https://res.cloudinary.com/dnvkirfyz/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1786088264/Faiz_Tahir_-Head_Of_Language_Department.jpg" alt="" /></div>
+            <div class="team-name">Faiz Tahir</div>
+            <div class="team-role">Head of Language Department</div>
+            <div class="team-desc">Leads IELTS/PTE preparation and English coaching.</div>
+          </div>
+          <a href="https://www.linkedin.com/in/sheikh-faiz-tahir-283470336/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Future Career Hub on LinkedIn" onclick="event.stopPropagation()">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- OFFICES -->
+  <section class="section bg-pink">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Our Offices</p>
+        <h2 style="margin:14px 0 14px;">Visit us in person</h2>
+        <p class="lead">We have offices across Pakistan so you can meet our counsellors face-to-face, any time.</p>
+      </div>
+      <div class="grid-2 reveal snap-x">
+        <div class="card">
+          <div style="width:44px;height:44px;border-radius:12px;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="fa-solid fa-location-dot" style="font-size:20px;"></i></div>
+          <h4 style="margin-bottom:6px;">Faisalabad (Head Office)</h4>
+          <p style="font-size:13.5px;color:#8A8A95;margin-bottom:12px;">A-147, People's Colony No. 01, Near Faisal Hospital, Faisalabad, Pakistan, 38000</p>
+          <p style="font-size:13.5px;font-weight:500;color:#D81E2C;display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> 0343-3350139</p>
+          <p style="font-size:13px;color:#8A8A95;margin-top:4px;">Mon–Sat · 10am – 7pm</p>
+        </div>
+        <div class="card">
+          <div style="width:44px;height:44px;border-radius:12px;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="fa-solid fa-location-dot" style="font-size:20px;"></i></div>
+          <h4 style="margin-bottom:6px;">Gojra</h4>
+          <p style="font-size:13.5px;color:#8A8A95;margin-bottom:12px;">Al-Manzoor Plaza, Near Jinnah College, Pensra Road, Gojra, Pakistan</p>
+          <p style="font-size:13.5px;font-weight:500;color:#D81E2C;display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> +92 326 7350920</p>
+          <p style="font-size:13px;color:#8A8A95;margin-top:4px;">Mon–Sat · 10am – 7pm</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <p class="eyebrow" style="color:rgba(255,255,255,.7);">Let's Talk</p>
+        <h2>Your future starts with a conversation</h2>
+        <p>Book a free 30-minute consultation with one of our certified counsellors. No pressure, no commitment.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="partner.html" class="btn" style="background:#fff;color:#D81E2C;font-weight:600;">Book Free Consultation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="tel:03433350139" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> 0343-3350139</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  
+  <script>FCH.init('about','root');</script>
+</body>
+</html>

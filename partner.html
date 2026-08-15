@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Become a Partner — Business & Referral Partnerships | Future Career Hub</title>
+  <meta name="description" content="Run a small consultancy, study centre or work as an independent education agent? Partner with Future Career Hub and give your students access to 12+ countries and verified university admissions." />
+  <meta name="keywords" content="become a partner study abroad, education agent partnership Pakistan, study abroad referral partner, consultancy partnership Future Career Hub, sub-agent study abroad Pakistan" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Become a Partner — Future Career Hub" />
+  <meta property="og:description" content="Partner with Future Career Hub — expand your reach to 12+ countries and top universities without building the network yourself." />
+  <meta property="og:image" content="assets/fch-logo.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" href="assets/android-chrome-192x192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background:linear-gradient(180deg,#fff 0%,#F5F6FA 100%); }
+
+    /* ── WHO IT'S FOR ── */
+    .fit-card { background:#fff; border:1px solid rgba(26,26,26,.07); border-radius:20px; padding:30px; box-shadow:0 1px 2px rgba(26,26,26,.04); transition:transform .25s,box-shadow .25s; }
+    .fit-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(216,30,44,.14); }
+    .fit-icon { width:54px; height:54px; border-radius:14px; background:linear-gradient(135deg,#D81E2C,#a01420); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; box-shadow:0 10px 24px rgba(216,30,44,.3); }
+
+    /* ── BENEFITS ── */
+    .benefit-card { background:#fff; border:1px solid rgba(26,26,26,.07); border-radius:18px; padding:26px; box-shadow:0 1px 2px rgba(26,26,26,.04); }
+    .benefit-icon { width:46px; height:46px; border-radius:12px; background:#FDEAEC; color:#D81E2C; display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:16px; }
+
+    /* ── HOW IT WORKS ── */
+    .partner-steps { display:flex; flex-direction:column; gap:0; }
+    .partner-step { display:flex; gap:20px; padding:22px 0; border-bottom:1px solid rgba(26,26,26,.07); }
+    .partner-step:last-child { border-bottom:none; }
+    .partner-step-num { flex-shrink:0; width:46px; height:46px; border-radius:50%; background:#FDEAEC; color:#D81E2C; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:700; font-size:17px; }
+
+    /* ── APPLICATION FORM ── */
+    .partner-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:0; background:#fff; border:1px solid rgba(26,26,26,.07); border-radius:28px; overflow:hidden; box-shadow:0 24px 60px rgba(26,26,26,.10); }
+    .partner-left { background:linear-gradient(155deg,#D81E2C 0%,#9c1119 100%); padding:52px 44px; position:relative; overflow:hidden; }
+    .partner-left::before { content:''; position:absolute; top:-60px; left:-60px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.10); }
+    .partner-left::after  { content:''; position:absolute; bottom:-40px; right:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.06); }
+    .partner-left-inner   { position:relative; z-index:2; }
+    .partner-info-row { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+    .partner-info-icon { width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.16); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .partner-info-label { font-size:11.5px; color:rgba(255,255,255,.55); margin-bottom:3px; letter-spacing:.04em; text-transform:uppercase; }
+    .partner-info-value { font-size:15px; font-weight:500; color:#fff; }
+    .partner-perk { display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:rgba(255,255,255,.85); line-height:1.5; margin-bottom:12px; }
+    .partner-perk i { color:#fff; margin-top:2px; flex-shrink:0; }
+
+    .partner-right { padding:52px 44px; }
+    .form-group { margin-bottom:18px; }
+    .form-label { display:block; font-size:13px; font-weight:500; color:#1A1A1A; margin-bottom:7px; }
+    .form-input { width:100%; padding:13px 15px; border:1.5px solid rgba(26,26,26,.12); border-radius:11px; font-family:'Google Sans Flex',sans-serif; font-size:14.5px; color:#1A1A1A; outline:none; transition:border-color .2s; background:#fff; box-sizing:border-box; }
+    .form-input:focus { border-color:#D81E2C; box-shadow:0 0 0 3px rgba(216,30,44,.08); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238A8A95' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; }
+    .submit-btn { width:100%; background:linear-gradient(135deg,#D81E2C,#b5141f); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:15.5px; font-weight:500; border:none; border-radius:11px; padding:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:transform .2s,box-shadow .2s; box-shadow:0 12px 28px rgba(216,30,44,.3); }
+    .submit-btn:hover { transform:translateY(-2px); box-shadow:0 16px 36px rgba(216,30,44,.4); }
+    .success-box { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:400px; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .partner-grid { grid-template-columns:1fr; }
+      .partner-left, .partner-right { padding:40px 32px; }
+    }
+    @media(max-width:900px) {
+      .partner-grid { grid-template-columns:1fr; }
+      .partner-left, .partner-right { padding:36px 28px; }
+    }
+    @media(max-width:768px) {
+      .partner-step { gap:14px; }
+      .fit-card, .benefit-card { padding:22px; }
+    }
+    @media(max-width:600px) {
+      .form-row { grid-template-columns:1fr; }
+      .partner-left, .partner-right { padding:28px 18px; }
+    }
+  </style>
+<script src="js/main.js?v=2" defer></script>
+</head>
+<body data-page="partner" data-root="root">
+<div id="header-slot"></div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-blob"></div>
+  <div class="container page-hero-grid">
+    <div>
+      <p class="eyebrow">Become a Partner</p>
+      <h1>Your students deserve<br/><span style="color:#D81E2C;">12+ countries.</span> Not 2.</h1>
+      <p class="lead" style="margin:16px 0 28px;">Run a small consultancy, work as an independent education agent, or teach IELTS/PTE but can't offer every destination or university on your own? Partner with Future Career Hub — we bring the university network, visa expertise and back-office support, you bring the students.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;">
+        <a href="#apply" class="btn btn-primary">Apply to Partner
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#benefits" class="btn btn-outline">See Partner Benefits</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div style="position:relative;width:100%;max-width:380px;height:340px;">
+        <div style="position:absolute;top:0;left:8%;width:210px;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(26,26,26,.1);animation:heroFloat 5s ease-in-out infinite;">
+          <span style="display:flex;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fa-solid fa-handshake" style="color:#fff;font-size:19px;"></i>
+          </span>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:14.5px;color:#1A1A1A;">Commission on Referrals</div>
+        </div>
+        <div style="position:absolute;top:100px;right:2%;width:200px;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(26,26,26,.1);animation:heroFloat2 6s ease-in-out infinite;">
+          <span style="display:flex;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#1A1A1A,#3a3a3a);align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fa-solid fa-earth-americas" style="color:#fff;font-size:19px;"></i>
+          </span>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:14.5px;color:#1A1A1A;">12+ Country Network</div>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;width:200px;background:#fff;border:1px solid rgba(26,26,26,.07);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(26,26,26,.1);animation:heroFloat 6.5s ease-in-out infinite;">
+          <span style="display:flex;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#D81E2C,#a01420);align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fa-solid fa-user-tie" style="color:#fff;font-size:19px;"></i>
+          </span>
+          <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:14.5px;color:#1A1A1A;">Dedicated Partner Manager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:#fff;border-top:1px solid rgba(26,26,26,.06);border-bottom:1px solid rgba(26,26,26,.06);">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat-item reveal"><div class="stat-number" data-counter="10" data-suffix="+">0</div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-item reveal"><div class="stat-number" data-counter="12" data-suffix="+">0</div><div class="stat-label">Countries Covered</div></div>
+      <div class="stat-item reveal"><div class="stat-number" data-counter="98" data-suffix="%">0</div><div class="stat-label">Visa Success Rate</div></div>
+      <div class="stat-item reveal"><div class="stat-number" data-counter="5000" data-suffix="+">0</div><div class="stat-label">Students Placed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Is This You?</p>
+      <h2 style="margin:14px 0 14px;">Built for the agents big platforms overlook</h2>
+      <p class="lead">You don't need a huge team or offices in every country to offer your students a world of options. That's what we're here for.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="fit-card">
+        <div class="fit-icon"><i class="fa-solid fa-store"></i></div>
+        <h3 style="margin-bottom:8px;">Small Consultancy Owners</h3>
+        <p style="font-size:14px;line-height:1.65;color:#5A5A5A;">Already advising students but limited to 2–3 countries or a handful of university tie-ups? Plug into our network instead of building one from scratch.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-icon"><i class="fa-solid fa-user"></i></div>
+        <h3 style="margin-bottom:8px;">Independent Education Agents</h3>
+        <p style="font-size:14px;line-height:1.65;color:#5A5A5A;">Working solo out of a small office or from home? Get access to admissions, visa processing and marketing support without hiring a team.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3 style="margin-bottom:8px;">IELTS / PTE &amp; Study Centres</h3>
+        <p style="font-size:14px;line-height:1.65;color:#5A5A5A;">Already teaching test prep? Turn your students into successful applicants by referring them for admissions and visa support — and earn on every enrolment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section bg-pink" id="benefits">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Why Partner With Us</p>
+      <h2 style="margin:14px 0 14px;">Everything a bigger agency has. Without becoming one.</h2>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+        <h3 style="margin-bottom:8px;">Referral Commission</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">Earn a transparent commission for every student you refer who enrols through our network.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3 style="margin-bottom:8px;">12+ Country Access</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">Offer the UK, USA, Canada, Australia, Europe and more — without building those relationships yourself.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <h3 style="margin-bottom:8px;">Dedicated Partner Manager</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">A single point of contact who supports your files from application to visa decision.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3 style="margin-bottom:8px;">Case Tracking</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">Follow every referred student's status — from application to admission to visa outcome.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        <h3 style="margin-bottom:8px;">Co-Branded Marketing</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">Ready-made brochures, banners and social content you can put your own name on.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3 style="margin-bottom:8px;">Free Onboarding &amp; Training</h3>
+        <p style="font-size:13.5px;line-height:1.6;color:#8A8A95;">We train your team on our process, documentation standards and visa requirements — at no cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2-3 reveal">
+      <div>
+        <p class="eyebrow">How It Works</p>
+        <h2 style="margin:14px 0 16px;">From application to your first referral</h2>
+        <p style="font-size:15px;line-height:1.75;color:#5A5A5A;">No long contracts, no upfront fees to join — just a straightforward process to get your students access to our full network.</p>
+      </div>
+      <div class="partner-steps">
+        <div class="partner-step">
+          <div class="partner-step-num">1</div>
+          <div><strong style="color:#1A1A1A;font-size:15.5px;font-family:'Syne',sans-serif;">Apply</strong><p style="font-size:14px;color:#5A5A5A;margin-top:4px;">Fill in the partner application form below — takes less than 3 minutes.</p></div>
+        </div>
+        <div class="partner-step">
+          <div class="partner-step-num">2</div>
+          <div><strong style="color:#1A1A1A;font-size:15.5px;font-family:'Syne',sans-serif;">Discovery Call</strong><p style="font-size:14px;color:#5A5A5A;margin-top:4px;">Our partnerships team reviews your profile and discusses the right fit for your business.</p></div>
+        </div>
+        <div class="partner-step">
+          <div class="partner-step-num">3</div>
+          <div><strong style="color:#1A1A1A;font-size:15.5px;font-family:'Syne',sans-serif;">Onboarding &amp; Training</strong><p style="font-size:14px;color:#5A5A5A;margin-top:4px;">Sign the partnership agreement, get access to our systems and marketing materials.</p></div>
+        </div>
+        <div class="partner-step">
+          <div class="partner-step-num">4</div>
+          <div><strong style="color:#1A1A1A;font-size:15.5px;font-family:'Syne',sans-serif;">Refer &amp; Earn</strong><p style="font-size:14px;color:#5A5A5A;margin-top:4px;">Start referring students, track their progress, and earn commission on successful enrolments.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="section bg-pink" id="apply">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Apply Now</p>
+      <h2 style="margin:14px 0 14px;">Tell us about your business</h2>
+    </div>
+    <div class="partner-grid reveal">
+
+      <!-- LEFT — INFO -->
+      <div class="partner-left">
+        <div class="partner-left-inner">
+          <p class="eyebrow" style="color:rgba(255,255,255,.75);">Partnerships Team</p>
+          <h2 style="color:#fff;margin:12px 0 16px;font-size:clamp(22px,3vw,30px);">We review every application within 3 business days</h2>
+          <p style="font-size:14.5px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:28px;">No minimum student volume required to apply — we work with partners of every size.</p>
+
+          <div class="partner-perk"><i class="fa-solid fa-check"></i> No upfront joining fee</div>
+          <div class="partner-perk"><i class="fa-solid fa-check"></i> Work with any number of students</div>
+          <div class="partner-perk"><i class="fa-solid fa-check"></i> Cancel the partnership any time</div>
+
+          <div style="margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.18);">
+            <div class="partner-info-row">
+              <div class="partner-info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="partner-info-label">Partnerships Phone / WhatsApp</div>
+                <div class="partner-info-value">0300-1234567</div>
+              </div>
+            </div>
+            <div class="partner-info-row" style="margin-bottom:0;">
+              <div class="partner-info-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div class="partner-info-label">Partnerships Email</div>
+                <div class="partner-info-value">bdm@futurecareerhub.org.uk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — FORM -->
+      <div class="partner-right">
+        <div id="form-wrap">
+          <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px;">Partner application</h3>
+          <p style="font-size:14px;color:#8A8A95;margin-bottom:26px;">Fill in the form and our partnerships team will reach out within 3 business days.</p>
+
+          <form id="partner-form" onsubmit="handlePartnerSubmit(event)">
+            <input type="hidden" name="formType" value="partner" />
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Business / Consultancy Name *</label>
+                <input class="form-input" type="text" name="businessName" placeholder="e.g. Bright Path Consultants" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact Person *</label>
+                <input class="form-input" type="text" name="contactName" placeholder="Ahmed Khan" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input class="form-input" type="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone / WhatsApp *</label>
+                <input class="form-input" type="tel" name="phone" placeholder="03XX-XXXXXXX" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">City / Country</label>
+                <input class="form-input" type="text" name="location" placeholder="e.g. Multan, Pakistan" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Business Type</label>
+                <select class="form-input form-select" name="businessType">
+                  <option value="">Select type…</option>
+                  <option>Small Consultancy</option>
+                  <option>Independent Education Agent</option>
+                  <option>IELTS / PTE Study Centre</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Years in Operation</label>
+              <select class="form-input form-select" name="yearsOperating">
+                <option value="">Select…</option>
+                <option>Just starting out</option>
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5+ years</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Tell us about your business</label>
+              <textarea class="form-input" name="message" rows="4" placeholder="How many students do you typically work with, which countries do you currently cover, and what are you hoping to get from a partnership?" style="resize:none;height:110px;"></textarea>
+            </div>
+
+            <label style="display:flex;align-items:flex-start;gap:9px;margin-bottom:18px;cursor:pointer;">
+              <input type="checkbox" id="email-confirm" required style="margin-top:3px;width:16px;height:16px;accent-color:#D81E2C;flex-shrink:0;cursor:pointer;" />
+              <span style="font-size:12.5px;color:#5A5A5A;line-height:1.55;">I confirm the email address above is the one I'm using to submit this form, and I agree to be contacted about my application.</span>
+            </label>
+
+            <div id="partner-form-error" style="display:none;color:#D81E2C;font-size:13.5px;margin-bottom:14px;"></div>
+
+            <button type="submit" class="submit-btn" id="partner-submit-btn">
+              Submit Partner Application
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="success-box" id="partner-success-box">
+          <div style="width:72px;height:72px;border-radius:50%;background:#FDEAEC;color:#D81E2C;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:700;margin-bottom:10px;">Application Received!</h3>
+          <p style="color:#5A5A5A;font-size:15px;max-width:340px;line-height:1.65;">Thank you for applying. Our partnerships team will review your details and get in touch within 3 business days.</p>
+          <a href="https://wa.me/923001234567" class="btn btn-primary" style="margin-top:24px;">Chat on WhatsApp <i class="fa-brands fa-whatsapp" style="font-size:16px;"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section bg-pink">
+  <div class="container reveal">
+    <div class="cta-banner">
+      <p class="eyebrow" style="color:rgba(255,255,255,.7);">Let's grow together</p>
+      <h2 style="color:#fff;margin:16px 0;">Your network, our infrastructure —<br/>your students' success</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href="#apply" class="btn" style="background:#fff;color:#D81E2C;">Apply to Partner</a>
+        <a href="mailto:bdm@futurecareerhub.org.uk" class="btn" style="background:rgba(255,255,255,.14);color:#fff;">Email Us Instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script>
+  function handlePartnerSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('partner-form');
+    const btn = document.getElementById('partner-submit-btn');
+    const errBox = document.getElementById('partner-form-error');
+    errBox.style.display = 'none';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    fetch('send-mail.php', { method: 'POST', body: new FormData(form) })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          document.getElementById('form-wrap').style.display = 'none';
+          document.getElementById('partner-success-box').style.display = 'flex';
+          FCH.toast("Application sent! We'll be in touch within 3 business days.");
+        } else {
+          throw new Error(data.error || 'Something went wrong');
+        }
+      })
+      .catch(() => {
+        errBox.textContent = "Couldn't send your application right now. Please WhatsApp us at 0300-1234567 or try again shortly.";
+        errBox.style.display = 'block';
+        FCH.toast("Couldn't send your application. Please try again.", 'error');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      });
+  }
+</script>
+</body>
+</html>

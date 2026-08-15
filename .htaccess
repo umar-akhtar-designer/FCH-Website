@@ -1,0 +1,17 @@
+# Future Career Hub — clean URLs (hide .html in the address bar)
+
+RewriteEngine On
+
+# If someone requests /about.html directly, send them to /about instead
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Serve the matching .html file for a clean URL like /about,
+# but only if there isn't already a real file/folder at that path
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^.]+)$ $1.html [L]
+
+# Custom 404 page (optional — remove this line if you don't have one)
+# ErrorDocument 404 /404.html
